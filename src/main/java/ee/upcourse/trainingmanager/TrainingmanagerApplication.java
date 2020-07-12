@@ -10,5 +10,4 @@ public class TrainingmanagerApplication {
         SpringApplication.run(TrainingmanagerApplication.class, args);
         System.out.println("sss");
     }
-
 }
