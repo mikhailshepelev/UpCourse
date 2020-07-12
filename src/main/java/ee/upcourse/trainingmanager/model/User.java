@@ -2,15 +2,15 @@ package ee.upcourse.trainingmanager.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,20 +22,33 @@ public class User {
 
     private String email;
 
-    private String userName;
+    private String username;
 
     private String password;
 
     private boolean active;
 
     @ManyToMany
-    private List<Role> roles;
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id")
+    )
+    private List<Role> roles = new ArrayList<>();
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany
     @JoinTable(
             name = "course_user",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<Course> courses;
+
+    public User(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setRole(Role role) {
+        roles.add(role);
+    }
 }
