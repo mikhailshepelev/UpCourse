@@ -28,6 +28,9 @@ public class User {
 
     private boolean active;
 
+    @ManyToMany
+    private List<Role> roles;
+
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "course_user",
@@ -35,5 +38,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<Course> courses;
-
 }

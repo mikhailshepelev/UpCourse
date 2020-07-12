@@ -4,24 +4,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "lesson")
-public class Lesson {
+@Table(name = "topic")
+public class Topic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String subject;
-
-    private Date date;
+    private String name;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "topic_id")
-    private Topic topic;
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    @OneToMany(mappedBy = "topic",
+    cascade = CascadeType.ALL)
+    private List<Lesson> lessons;
 
 }
