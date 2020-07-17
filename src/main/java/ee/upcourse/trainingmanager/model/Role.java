@@ -1,14 +1,14 @@
 package ee.upcourse.trainingmanager.model;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
-@NoArgsConstructor
 @Entity
+@Table(name = "role")
 public class Role {
 
     @Id
@@ -17,10 +17,20 @@ public class Role {
 
     private String name;
 
+    public Role() {
+    }
+
+    //    @OneToOne(mappedBy = "role")
+//    private User user;
+
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private Set<Userr> users;
 
     public Role(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
