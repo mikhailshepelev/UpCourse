@@ -1,9 +1,5 @@
 package ee.upcourse.trainingmanager.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,11 +16,8 @@ public class Role {
     public Role() {
     }
 
-    //    @OneToOne(mappedBy = "role")
-//    private User user;
-
     @ManyToMany(mappedBy = "roles")
-    private Set<Userr> users;
+    private Set<User> users;
 
     public Role(String name) {
         this.name = name;
