@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
@@ -27,10 +28,6 @@ public class User {
     private String password;
 
     private boolean active;
-
-//    @OneToOne
-//    @JoinColumn(name = "role_id")
-//    private Role role;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
