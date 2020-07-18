@@ -3,6 +3,8 @@ package ee.upcourse.trainingmanager.model;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
+@ToString
 @Table(name = "user")
 public class User {
 
@@ -23,6 +26,7 @@ public class User {
 
     private String email;
 
+    @Column(name = "username")
     private String username;
 
     private String password;
