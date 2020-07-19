@@ -1,7 +1,10 @@
 package ee.upcourse.trainingmanager.model;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +12,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
+@ToString
 @Table(name = "user")
-public class User{
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;
@@ -22,17 +26,18 @@ public class User{
 
     private String email;
 
+    @Column(name = "username")
     private String username;
 
     private String password;
 
     private boolean active;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
-            joinColumns = @JoinColumn(name = "users_id"),
-            inverseJoinColumns = @JoinColumn(name = "roles_id")
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> roles = new ArrayList<>();
 
@@ -51,4 +56,5 @@ public class User{
     public void setRole(Role role) {
         roles.add(role);
     }
+
 }
