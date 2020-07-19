@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import {CourseService} from "./services/course.service";
 
 const routes: Routes = [
   {path: 'course/:id', component: CoursesListComponent},
@@ -24,7 +25,7 @@ const routes: Routes = [
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
