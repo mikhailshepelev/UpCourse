@@ -20,6 +20,7 @@ public class Course {
 
     private String name;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "course",
             cascade = CascadeType.ALL)
