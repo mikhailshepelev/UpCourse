@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
+@CrossOrigin
 @RestController
 public class MainController {
 
     @Autowired
     private UserRepository userRepository;
+
+
 
     @GetMapping(value = "/")
     @ResponseBody

@@ -41,7 +41,7 @@ public class User {
     )
     private List<Role> roles = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_user",
             joinColumns = @JoinColumn(name = "user_id"),
