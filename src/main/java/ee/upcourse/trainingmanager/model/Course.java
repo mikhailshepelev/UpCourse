@@ -14,13 +14,15 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
+/*
 
     @OneToMany(mappedBy = "course",
             cascade = CascadeType.ALL)
     private List<Topic> topics;
+*/
 
 
 }
