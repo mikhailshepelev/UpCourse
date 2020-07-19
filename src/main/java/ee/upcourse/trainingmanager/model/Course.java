@@ -1,5 +1,7 @@
 package ee.upcourse.trainingmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,13 +16,12 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course",
             cascade = CascadeType.ALL)
     private List<Topic> topics;
-
-
 }
