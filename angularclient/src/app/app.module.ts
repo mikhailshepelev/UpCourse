@@ -6,6 +6,7 @@ import { CoursesListComponent } from './components/courses-list/courses-list.com
 import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {CourseService} from "./services/course.service";
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {path: 'course/:id', component: CoursesListComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [CourseService],

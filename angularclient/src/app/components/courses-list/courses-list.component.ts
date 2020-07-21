@@ -10,6 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class CoursesListComponent implements OnInit {
 
+  email;
   courses: Course[];
 
   constructor(private courseService: CourseService,
@@ -19,6 +20,17 @@ export class CoursesListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listCourses();
     });
+    this.addNewCourse();
+
+  }
+
+  addNewCourse() {
+    this.courseService.postJson(new Course(this.email)).subscribe(
+      data => {
+        console.log(data)
+        this.listCourses();
+      }
+    );
   }
 
   listCourses() {

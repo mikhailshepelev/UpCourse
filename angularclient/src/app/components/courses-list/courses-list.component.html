@@ -1,5 +1,14 @@
+<div>
+  <form action="http://localhost:4200/courses" method="post">
+    <label>Course name:</label>
+    <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}"><br><br>
+    <div>
+    <button (click)="addNewCourse()">Add</button>
+    </div>
+  </form>
+</div>
+
 <p *ngFor="let tempCourse of courses">
   {{tempCourse.name}}
 </p>
-
 
