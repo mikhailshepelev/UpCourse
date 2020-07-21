@@ -34,6 +34,11 @@ export class CourseService {
     )
   }
 
+  deleteCourse(courseId:string) {
+    const url = `http://localhost:8080/courses/${courseId}`;
+    return this.httpClient.delete(url, {headers: this.headers})
+  }
+
 }
 
 interface GetResponseCourses {

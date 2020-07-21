@@ -1,7 +1,7 @@
 <div>
   <form action="http://localhost:4200/courses" method="post">
     <label>Course name:</label>
-    <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}"><br><br>
+    <input [(ngModel)]="courseName" [ngModelOptions]="{standalone: true}"><br><br>
     <div>
     <button (click)="addNewCourse()">Add</button>
     </div>
@@ -9,6 +9,6 @@
 </div>
 
 <p *ngFor="let tempCourse of courses">
-  {{tempCourse.name}}
+ {{tempCourse.name}} <button (click)="deleteCourse(tempCourse.id)">Delete</button>
 </p>
 
