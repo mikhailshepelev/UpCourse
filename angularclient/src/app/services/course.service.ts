@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Course} from "../common/course";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
@@ -11,13 +11,34 @@ export class CourseService {
 
   private baseUrl = 'http://localhost:8080/courses';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   getCoursesList(): Observable<Course[]> {
     return this.httpClient.get<GetResponseCourses>(this.baseUrl).pipe(
       map(response => response._embedded.courses)
     );
   }
+
+  /** POST: add a new course to the database */
+
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  postJson<T>(data: any): Observable<T> {
+    return this.httpClient.post<T>(
+      this.baseUrl,
+      JSON.stringify(data),
+      {headers: this.headers}
+    )
+  }
+
+  deleteCourse(courseId:string) {
+    const url = `http://localhost:8080/courses/${courseId}`;
+    return this.httpClient.delete(url, {headers: this.headers})
+  }
+
 }
 
 interface GetResponseCourses {

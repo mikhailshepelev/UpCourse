@@ -10,6 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class CoursesListComponent implements OnInit {
 
+  courseName;
   courses: Course[];
 
   constructor(private courseService: CourseService,
@@ -19,12 +20,31 @@ export class CoursesListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listCourses();
     });
+
   }
+
+  addNewCourse() {
+    this.courseService.postJson(new Course(this.courseName)).subscribe(
+      data => {
+        console.log(data)
+        this.listCourses();
+      }
+    );
+  }
+
+  deleteCourse(id: number) {
+    this.courseService.deleteCourse(id.toString()).subscribe(
+      data => {
+        console.log(data)
+        this.listCourses();
+      }
+    )
+    }
+
+
 
   listCourses() {
 
-
-    // now gets the products from given category id
     this.courseService.getCoursesList().subscribe(
       data => {
         this.courses = data;
