@@ -1,10 +1,12 @@
 
 <h4>Available courses</h4>
 <br>
+<div id="courses-list">
 <ul class="list-group" *ngFor="let tempCourse of courses">
   <li class="list-group-item">{{tempCourse.name}}
     <button type="button" class="btn btn-primary float-right" (click)="deleteCourse(tempCourse.id)">Delete</button></li>
 </ul>
+</div>
 <br>
 <div>
   <h5>Add new course</h5>
