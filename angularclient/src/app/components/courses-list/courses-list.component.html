@@ -1,12 +1,34 @@
+
+<h4>Available courses</h4>
+<br>
+<div id="courses-list">
+<ul class="list-group" *ngFor="let tempCourse of courses">
+  <li class="list-group-item">{{tempCourse.name}}
+    <button type="button" class="btn btn-primary float-right" (click)="deleteCourse(tempCourse.id)">Delete</button></li>
+</ul>
+</div>
+<br>
 <div>
-  <form>
-    <label>Course name:</label>
-    <input [(ngModel)]="courseName" [ngModelOptions]="{standalone: true}">
-    <span style="padding-left: 10px">
+  <h5>Add new course</h5>
+  <form action="http://localhost:4200/courses" method="post">
+    <div class="form-group">
+    <label>Course name: </label>
+    <input type="text" class="form-control" [(ngModel)]="courseName" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" (click)="addNewCourse()">Add</button>
+    </div>
+  </form>
+</div>
+
+<!--<form>
+  <label>Course name:</label>
+  <input [(ngModel)]="courseName" [ngModelOptions]="{standalone: true}">
+  <span style="padding-left: 10px">
       <button (click)="addNewCourse()">Add</button>
     </span>
-    <br><br>
-  </form>
+  <br><br>
+</form>
 </div>
 
 <div *ngFor="let tempCourse of courses">
@@ -16,5 +38,6 @@
     <button (click)="deleteCourse(tempCourse.id)">Delete</button>
   </span>
   <br><br>
-</div>
+</div>-->
+
 
