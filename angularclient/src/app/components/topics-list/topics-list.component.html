@@ -1,0 +1,19 @@
+<h2>{{currentCourse?.name}}</h2>
+<hr>
+<div>
+  <form>
+    <label>Topic name:</label>
+    <input [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
+    <span style="padding-left: 10px">
+      <button (click)="addNewTopic()">Add</button>
+    </span>
+    <br><br>
+  </form>
+</div>
+
+<p *ngFor="let tempTopic of topics">
+  {{tempTopic.name}}
+  <span style="padding-left: 10px">
+    <button (click)="deleteTopic(tempTopic.id)">Delete</button>
+  </span>
+</p>

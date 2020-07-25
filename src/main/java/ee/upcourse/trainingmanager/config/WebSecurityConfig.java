@@ -21,11 +21,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/images/**",
                         "/fonts/**",
                         "/h2-console/**",
-                        "/courses/**")
+                        "/courses/**",
+                        "/topics/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .csrf().ignoringAntMatchers("/h2-console/**", "/courses/**") //don't apply CSRF protection to /h2-console
+                .csrf().ignoringAntMatchers("/h2-console/**", "/courses/**", "/topics/**") //don't apply CSRF protection to /h2-console
                 .and().headers().frameOptions().sameOrigin() //allow use of frame to same origin urls
                 .and()
                 .formLogin()
