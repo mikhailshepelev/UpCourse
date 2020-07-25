@@ -1,0 +1,21 @@
+<h2>{{currentTopic?.name}}</h2>
+<hr>
+<div>
+  <form>
+    <label style="padding-right: 10px">Lesson subject:</label>
+    <input [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
+    <label style="padding-left: 10px; padding-right: 10px">Date:</label>
+    <input type="date" [(ngModel)]="lessonDate" [ngModelOptions]="{standalone: true}">
+    <span style="padding-left: 10px">
+      <button (click)="addNewLesson()">Add</button>
+    </span>
+    <br><br>
+  </form>
+</div>
+
+<p *ngFor="let tempLesson of lessons">
+  Subject: {{tempLesson.subject}} | Date: {{tempLesson.date}}
+  <span style="padding-left: 10px">
+    <button (click)="deleteLesson(tempLesson.id)">Delete</button>
+  </span>
+</p>

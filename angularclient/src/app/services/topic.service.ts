@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 import {Topic} from "../common/topic";
+import {Course} from "../common/course";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class TopicService {
     return this.httpClient.get<GetResponseTopics>(searchUrl).pipe(
       map(response => response._embedded.topics)
     );
+  }
+
+  getTopicById(id: number) {
+    return this.httpClient.get<Topic>(this.baseUrl + "/" + id);
   }
 
   headers = new HttpHeaders({

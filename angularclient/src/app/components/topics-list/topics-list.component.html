@@ -12,8 +12,9 @@
 </div>
 
 <p *ngFor="let tempTopic of topics">
-  {{tempTopic.name}}
+  <a routerLink="/topics/{{ tempTopic.id }}" routerLinkActive="active-link">{{tempTopic.name}}
   <span style="padding-left: 10px">
     <button (click)="deleteTopic(tempTopic.id)">Delete</button>
   </span>
+  </a>
 </p>

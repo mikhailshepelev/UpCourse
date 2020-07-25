@@ -8,11 +8,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {CourseService} from "./services/course.service";
 import {FormsModule} from "@angular/forms";
 import { TopicsListComponent } from './components/topics-list/topics-list.component';
+import { LessonsListComponent } from './components/lessons-list/lessons-list.component';
 
 const routes: Routes = [
   {path: 'course/:id', component: TopicsListComponent},
   {path: 'courses', component: CoursesListComponent},
   {path: 'topics', component: TopicsListComponent},
+  {path: 'topics/:id', component: LessonsListComponent},
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '/courses', pathMatch: 'full'},
 ];
@@ -21,7 +23,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     CoursesListComponent,
-    TopicsListComponent
+    TopicsListComponent,
+    LessonsListComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -20,11 +20,6 @@ export class CourseService {
     );
   }
 
-  /*getCourseById(id: number): Observable<Course> {
-    return this.httpClient.get<GetResponseCourse>(this.baseUrl + "/" + id).pipe(
-      map(response => response.course)
-    );
-  }*/
 
   getCourseById(id: number) {
     return this.httpClient.get<Course>(this.baseUrl + "/" + id);
