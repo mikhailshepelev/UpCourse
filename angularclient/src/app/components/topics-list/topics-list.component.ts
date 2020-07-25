@@ -32,7 +32,8 @@ export class TopicsListComponent implements OnInit {
 
 
   addNewTopic() {
-    this.topicService.postJson(new Topic(this.topicName, `http://localhost:8080/courses/${this.currentCourseId}`)).subscribe(
+    this.topicService.postJson(new Topic(this.topicName,
+      this.topicService.getBaseUrl()+ '/' + this.currentCourseId)).subscribe(
       data => {
         console.log(data)
         this.listTopics();

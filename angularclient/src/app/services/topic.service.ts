@@ -11,6 +11,10 @@ export class TopicService {
 
   private baseUrl = 'http://localhost:8080/topics';
 
+  getBaseUrl(): string {
+    return this.baseUrl;
+  }
+
   constructor(private httpClient: HttpClient) {
   }
 
