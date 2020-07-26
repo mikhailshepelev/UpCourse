@@ -12,6 +12,10 @@ export class CoursesListComponent implements OnInit {
 
   courseName;
   courses: Course[];
+  course: Course;
+
+
+
 
   constructor(private courseService: CourseService,
               private route: ActivatedRoute) { }
@@ -33,7 +37,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   deleteCourse(id: number) {
-    this.courseService.deleteCourse(id.toString()).subscribe(
+    this.courseService.deleteCourse(id).subscribe(
       data => {
         console.log(data)
         this.listCourses();
@@ -51,5 +55,7 @@ export class CoursesListComponent implements OnInit {
       }
     )
   }
+
+
 
 }

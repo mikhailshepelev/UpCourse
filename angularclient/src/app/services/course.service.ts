@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Course} from "../common/course";
 import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import {map, retry} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,13 @@ export class CourseService {
     );
   }
 
+
+  getCourseById(id: number) {
+    return this.httpClient.get<Course>(this.baseUrl + "/" + id);
+  }
+
+
+
   /** POST: add a new course to the database */
 
   headers = new HttpHeaders({
@@ -34,7 +41,7 @@ export class CourseService {
     )
   }
 
-  deleteCourse(courseId:string) {
+  deleteCourse(courseId:number) {
     const url = `http://localhost:8080/courses/${courseId}`;
     return this.httpClient.delete(url, {headers: this.headers})
   }
@@ -46,3 +53,10 @@ interface GetResponseCourses {
     courses: Course[];
   }
 }
+
+interface GetResponseCourse {
+    course: Course;
+}
+
+
+
