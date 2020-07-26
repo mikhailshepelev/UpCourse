@@ -1,20 +1,25 @@
-<h2>{{currentCourse?.name}}</h2>
+<!--Course name-->
+<div *ngIf="isClicked==false; then show else edit "></div>
+<ng-template #show><h2 (dblclick)="setClicked()">{{currentCourse?.name}}</h2></ng-template>
+<ng-template #edit>
+  <h2><input [(ngModel)]="currentCourse.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editCourse()"></h2>
+</ng-template>
 <hr>
+
+<!-- Add topic -->
 <div>
-  <form>
     <label>Topic name:</label>
     <input [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
     <span style="padding-left: 10px">
       <button (click)="addNewTopic()">Add</button>
     </span>
     <br><br>
-  </form>
 </div>
 
+<!-- Topic's list -->
 <p *ngFor="let tempTopic of topics">
-  <a routerLink="/topics/{{ tempTopic.id }}" routerLinkActive="active-link">{{tempTopic.name}}
+  <a routerLink="/topics/{{ tempTopic.id }}" routerLinkActive="active-link">{{tempTopic.name}}</a>
   <span style="padding-left: 10px">
     <button (click)="deleteTopic(tempTopic.id)">Delete</button>
   </span>
-  </a>
 </p>

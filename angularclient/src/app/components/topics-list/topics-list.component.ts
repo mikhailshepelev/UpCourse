@@ -16,6 +16,7 @@ export class TopicsListComponent implements OnInit {
   currentCourse: Course;
   topics: Topic[];
   topicName;
+  isClicked = false;
 
   constructor(private topicService: TopicService,
               private courseService: CourseService,
@@ -60,6 +61,7 @@ export class TopicsListComponent implements OnInit {
   }
 
 
+
   listTopics() {
 
     //check if "id" parameter is available
@@ -77,6 +79,20 @@ export class TopicsListComponent implements OnInit {
     )
 
 
+  }
+
+
+  editCourse() {
+    this.courseService.postJson(this.currentCourse).subscribe(
+      data => {
+        console.log(data)
+      });
+    this.isClicked = false;
+
+  }
+
+  setClicked() {
+    this.isClicked = true;
   }
 
 }

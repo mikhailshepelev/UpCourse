@@ -19,6 +19,8 @@ export class LessonsListComponent implements OnInit {
   lessons: Lesson[];
   lessonSubject;
   lessonDate;
+  isClicked = false;
+  todayDate = new Date();
 
   constructor(private topicService: TopicService,
               private lessonService: LessonService,
@@ -81,6 +83,19 @@ export class LessonsListComponent implements OnInit {
     )
 
 
+  }
+
+  editTopic() {
+    this.topicService.postJson(this.currentTopic).subscribe(
+      data => {
+        console.log(data)
+      });
+    this.isClicked = false;
+
+  }
+
+  setClicked() {
+    this.isClicked = true;
   }
 
 }

@@ -1,18 +1,25 @@
-<h2>{{currentTopic?.name}}</h2>
+<!--Topic name-->
+<div *ngIf="isClicked==false; then show else edit "></div>
+<ng-template #show><h2 (dblclick)="setClicked()">{{currentTopic?.name}}</h2></ng-template>
+<ng-template #edit>
+  <h2><input [(ngModel)]="currentTopic.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editTopic()"></h2>
+</ng-template>
 <hr>
+<hr>
+
+<!-- Add lesson -->
 <div>
-  <form>
     <label style="padding-right: 10px">Lesson subject:</label>
     <input [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
     <label style="padding-left: 10px; padding-right: 10px">Date:</label>
-    <input type="date" [(ngModel)]="lessonDate" [ngModelOptions]="{standalone: true}">
+    <input type="date" [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}">
     <span style="padding-left: 10px">
       <button (click)="addNewLesson()">Add</button>
     </span>
     <br><br>
-  </form>
 </div>
 
+<!-- Lessons's list -->
 <p *ngFor="let tempLesson of lessons">
   Subject: {{tempLesson.subject}} | Date: {{tempLesson.date}}
   <span style="padding-left: 10px">
