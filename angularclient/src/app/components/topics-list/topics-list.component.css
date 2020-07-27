@@ -1,0 +1,4 @@
+#topics-list {
+  max-height:500px;
+  overflow: auto;
+}

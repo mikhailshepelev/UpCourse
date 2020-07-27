@@ -6,20 +6,24 @@
 </ng-template>
 <hr>
 
-<!-- Add topic -->
-<div>
-    <label>Topic name:</label>
-    <input [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
-    <span style="padding-left: 10px">
-      <button (click)="addNewTopic()">Add</button>
-    </span>
-    <br><br>
+<!-- Topic's list -->
+<h4 class="my-4">Topics</h4>
+<div id="topics-list">
+  <ul class="list-group" *ngFor="let tempTopic of topics">
+  <li class="list-group-item list-group-item-action">
+  <a routerLink="/topics/{{ tempTopic.id }}" routerLinkActive="active-link">{{tempTopic.name}}</a>
+    <button type="submit" class="btn btn-primary float-right"  (click)="deleteTopic(tempTopic.id)">Delete</button>
+  </li>
+  </ul>
 </div>
 
-<!-- Topic's list -->
-<p *ngFor="let tempTopic of topics">
-  <a routerLink="/topics/{{ tempTopic.id }}" routerLinkActive="active-link">{{tempTopic.name}}</a>
-  <span style="padding-left: 10px">
-    <button (click)="deleteTopic(tempTopic.id)">Delete</button>
-  </span>
-</p>
+<!-- Add topic -->
+<div>
+  <h4 class="my-4">Add new topic</h4>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Topic name" [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" (click)="addNewTopic()">Add</button>
+  </div>
+</div>
