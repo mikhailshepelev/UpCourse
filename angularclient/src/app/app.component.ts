@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BasicAuthenticationService} from "./services/security/basic-authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
+  constructor(public basicAuthService : BasicAuthenticationService) { }
 
   url = "assets/js/custom.js";
 
