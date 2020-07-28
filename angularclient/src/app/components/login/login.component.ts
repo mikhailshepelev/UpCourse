@@ -9,14 +9,12 @@ import {BasicAuthenticationService} from "../../services/security/basic-authenti
 })
 export class LoginComponent implements OnInit {
 
-  username = 'user'
-  password = ''
-  errorMessage = 'Invalid Credentials'
+  username;
+  password;
   invalidLogin = false;
 
-  //router is dependency injection, injected behind the scene
   constructor(private router: Router,
-              private basicAuthenticationService : BasicAuthenticationService) {
+              public basicAuthenticationService : BasicAuthenticationService) {
   }
 
   ngOnInit(): void {
