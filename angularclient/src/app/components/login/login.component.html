@@ -1,0 +1,14 @@
+<h1>Login!</h1>
+
+<div class="container" *ngIf="!basicAuthenticationService.isUserLoggedIn()">
+  <div class="alert alert-warning" *ngIf="invalidLogin">Invalid Credentials</div>
+
+  <div>
+    User Name : <input type="text" name="username" [(ngModel)]="username">
+    Password : <input type="password" name="password" [(ngModel)]="password">
+
+    <button (click)=handleBasicAuthLogin() class="btn btn-success">Login</button>
+  </div>
+</div>
+<h3 *ngIf="basicAuthenticationService.isUserLoggedIn()">You are already logged in</h3>
+

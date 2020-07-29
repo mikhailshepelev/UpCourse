@@ -1,27 +1,45 @@
 <!--Topic name-->
 <div *ngIf="isClicked==false; then show else edit "></div>
-<ng-template #show><h2 (dblclick)="setClicked()">{{currentTopic?.name}}</h2></ng-template>
+<ng-template #show><h2 class="mx-3" (dblclick)="setClicked()">{{currentTopic?.name}}</h2></ng-template>
 <ng-template #edit>
   <h2><input [(ngModel)]="currentTopic.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editTopic()"></h2>
 </ng-template>
 <hr>
 
-<!-- Add lesson -->
-<div>
-    <label style="padding-right: 10px">Lesson subject:</label>
-    <input [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
-    <label style="padding-left: 10px; padding-right: 10px">Date:</label>
-    <input type="date" [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}">
-    <span style="padding-left: 10px">
-      <button (click)="addNewLesson()">Add</button>
-    </span>
-    <br><br>
+<!-- Lessons's list -->
+<h4 class="mx-3 mb-4">Lessons</h4>
+<div id="lessons-list">
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Subject</th>
+    <th scope="col">Date</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tempLesson of lessons">
+    <td scope="row"></td>
+    <td>{{tempLesson.subject}}</td>
+    <td>{{tempLesson.date}}</td>
+    <td><button type="submit" class="btn btn-primary" (click)="deleteLesson(tempLesson.id)">Delete</button></td>
+  </tr>
+  </tbody>
+</table>
 </div>
 
-<!-- Lessons's list -->
-<p *ngFor="let tempLesson of lessons">
-  Subject: {{tempLesson.subject}} | Date: {{tempLesson.date}}
-  <span style="padding-left: 10px">
-    <button (click)="deleteLesson(tempLesson.id)">Delete</button>
-  </span>
-</p>
+<!-- Add lesson -->
+<h4 class="mx-3 my-4">Add a new lesson</h4>
+<form class="form-inline mb-5">
+  <div class="form-group">
+    <label class="mx-3">Lesson subject:</label>
+    <input type="text" class="form-control"  [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label class="mx-3">Date:</label>
+    <input type="date" class="form-control" [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-primary mx-3"(click)="addNewLesson()">Add</button>
+</form>
+
