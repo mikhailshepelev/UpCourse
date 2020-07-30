@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService] },
   {path: 'course/:id', component: TopicsListComponent, canActivate:[RouteGuardService],
-    children: [{path: 'student', component: StudentsListComponent}] },
+    children: [{path: 'student/:action', component: StudentsListComponent}] },
   {path: 'courses', component: CoursesListComponent, canActivate:[RouteGuardService] },
   {path: 'topics', component: TopicsListComponent, canActivate:[RouteGuardService] },
   {path: 'topics/:id', component: LessonsListComponent, canActivate:[RouteGuardService] },

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Topic} from "../../common/topic";
 import {TopicService} from "../../services/topic.service";
 import {ActivatedRoute} from "@angular/router";
 import {CourseService} from "../../services/course.service";
 import {Course} from "../../common/course";
+
 
 @Component({
   selector: 'app-topics-list',
