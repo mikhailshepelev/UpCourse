@@ -4,8 +4,12 @@
 <ng-template #edit>
   <h2><input [(ngModel)]="currentCourse.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editCourse()"></h2>
 </ng-template>
-<hr>
 
+<!-- Add / Delete student buttons -->
+<button type="button" class="btn btn-primary mr-2">Add Student</button>
+<button type="button" class="btn btn-primary" >Delete Student</button>
+<hr>
+<router-outlet></router-outlet>
 <!-- Topic's list -->
 <h4 class="my-4">Topics</h4>
 <div id="topics-list">

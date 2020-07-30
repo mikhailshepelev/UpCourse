@@ -13,15 +13,18 @@ import {HttpIntercepterService} from "./services/security/http-intercepter.servi
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {RouteGuardService} from "./services/security/route-guard.service";
+import { StudentsListComponent } from './components/users/students-list/students-list.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService] },
-  {path: 'course/:id', component: TopicsListComponent, canActivate:[RouteGuardService] },
+  {path: 'course/:id', component: TopicsListComponent, canActivate:[RouteGuardService],
+    children: [{path: 'student', component: StudentsListComponent}] },
   {path: 'courses', component: CoursesListComponent, canActivate:[RouteGuardService] },
   {path: 'topics', component: TopicsListComponent, canActivate:[RouteGuardService] },
   {path: 'topics/:id', component: LessonsListComponent, canActivate:[RouteGuardService] },
+
   //{path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '/courses', pathMatch: 'full', canActivate:[RouteGuardService] },
 ];
@@ -33,7 +36,8 @@ const routes: Routes = [
     TopicsListComponent,
     LessonsListComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    StudentsListComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
