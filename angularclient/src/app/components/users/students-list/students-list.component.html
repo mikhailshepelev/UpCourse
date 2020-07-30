@@ -1,1 +1,15 @@
-<p>students-list works!</p>
+<div>
+  <h4 class="my-4" *ngIf="routeParam=='add'">Add Students</h4>
+  <h4 class="my-4" *ngIf="routeParam=='delete'">Delete Students</h4>
+  <a href="/course/{{courseId}}">Close</a>
+</div>
+
+<div id="topics-list">
+  <ul class="list-group" *ngFor="let tempStudent of students">
+    <li class="list-group-item list-group-item-action">
+      {{tempStudent.id}} {{tempStudent.firstName}} {{tempStudent.lastName}}
+      <button *ngIf="routeParam=='add'" type="submit" class="btn btn-primary float-right" (click)="addStudentToCourse(tempStudent.id)">Add</button>
+      <button *ngIf="routeParam=='delete'" type="submit" class="btn btn-primary float-right" (click)="deleteStudentFromCourse(tempStudent.id)">Delete</button>
+    </li>
+  </ul>
+</div>
