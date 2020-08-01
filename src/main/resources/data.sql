@@ -44,19 +44,19 @@ VALUES
 
 INSERT INTO course
 VALUES
-(2, 'Java Python 2'),
-(3, 'Java Tallinn 9'),
-(4, 'Java Testing 5'),
-(5, 'Java Python 3'),
-(6, 'Java Python 4'),
-(7, 'Java Python 5'),
-(8, 'Java Python 6'),
-(9, 'Java Python 7'),
-(10, 'Java Tallinn 10'),
-(12, 'Java Tallinn 11'),
-(13, 'Java Tallinn 12'),
-(14, 'Java Tallinn 13'),
-(15, 'Java Tallinn 14'),
+(2, 'Java for Beginners 1'),
+(3, 'Python 2'),
+(4, 'Java Advanced 5'),
+(5, 'Python 3'),
+(6, 'Python 4'),
+(7, 'Python 5'),
+(8, 'Python 6'),
+(9, 'Python 7'),
+(10, 'Java for Beginners 10'),
+(12, 'Java for Beginners 11'),
+(13, 'Java for Beginners 12'),
+(14, 'Java for Beginners 13'),
+(15, 'Java for Beginners 14'),
 (17, 'Software Testing 2'),
 (18, 'Software Testing 3'),
 (19, 'Software Testing 4'),
@@ -65,16 +65,15 @@ VALUES
 (22, 'JavaScript 2'),
 (23, 'JavaScript 3'),
 (24, 'JavaScript 4'),
-(26, 'Advance Software Testing 1'),
-(27, 'Advance Software Testing 2'),
-(28, 'Advance Software Testing 3'),
-(29, 'Advance Software Testing 4'),
-(30, 'Advance Software Testing 5'),
-(32, 'Java Advance 1'),
-(33, 'Java Advance 2'),
-(34, 'Java Advance 3'),
-(35, 'Java Advance 4');
-
+(26, 'Advanced Software Testing 1'),
+(27, 'Advanced Software Testing 2'),
+(28, 'Advanced Software Testing 3'),
+(29, 'Advanced Software Testing 4'),
+(30, 'Advanced Software Testing 5'),
+(32, 'Java Advanced 1'),
+(33, 'Java Advanced 2'),
+(34, 'Java Advanced 3'),
+(35, 'Java Advanced 4');
 
 INSERT INTO user_roles
 VALUES
@@ -116,7 +115,6 @@ VALUES
 
 INSERT INTO course_user
 VALUES
-
 (1,2),
 (1,3),
 (1,4),
@@ -148,16 +146,25 @@ VALUES
 (5,34),
 (5,35);
 
-
 INSERT INTO topic
 VALUES
 (1, 'Java Fundamentals', 2),
-(2, 'Java Advanced', 3),
-(3, 'Java Securities', 4),
-(4, 'Python Fundamentals', 5);
-
+(2, 'Python Fundamentals', 3),
+(3, 'JUnit', 17),
+(4, 'Python Fundamentals', 5),
+(5, 'Spring Framework', 4);
 
 INSERT INTO lesson
 VALUES
-(1, '2020-10-15', 'Java Fundamentals', 1);
+(1, '2020-10-15', 'Introduction to Java', 1),
+(2, '2020-10-18', 'Hello world project', 1),
+(3, '2020-10-24', 'Data types and variables', 1),
+(4, '2020-10-25', 'Statements in Java', 1),
+(5, '2020-11-01', 'Operators, Operands and Expressions', 1),
+(6, '2020-11-01', 'Spring Overview', 5),
+(7, '2020-11-11', 'Spring XML Configuration', 5),
+(8, '2020-11-12', 'Spring Configuration with Java Annotations', 5),
+(9, '2020-11-19', 'Spring MVC', 5),
+(10, '2020-11-25', 'Spring Security', 5)
+
 

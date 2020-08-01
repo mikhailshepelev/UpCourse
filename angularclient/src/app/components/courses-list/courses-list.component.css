@@ -1,5 +1,10 @@
 #courses-list {
+  font-size: large;
   max-height:300px;
   overflow: auto;
+}
+
+.list-group-custom .list-group-item:hover{
+  background-color: #B8DAFF;
 }
 
