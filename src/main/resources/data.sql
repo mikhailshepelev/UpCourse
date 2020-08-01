@@ -151,10 +151,10 @@ VALUES
 
 INSERT INTO topic
 VALUES
-(1, 'Java Fundamentals', 2),
-(2, 'Java Advanced', 3),
-(3, 'Java Securities', 4),
-(4, 'Python Fundamentals', 5);
+(1, 'Java Fundamentals', 2, 10),
+(2, 'Java Advanced', 3, 10),
+(3, 'Java Securities', 4, 32),
+(4, 'Python Fundamentals', 5, 24);
 
 
 INSERT INTO lesson

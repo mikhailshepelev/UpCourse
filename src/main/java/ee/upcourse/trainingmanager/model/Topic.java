@@ -26,4 +26,8 @@ public class Topic {
     cascade = CascadeType.ALL)
     private List<Lesson> lessons;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "teacher_id")
+    private User teacher;
+
 }

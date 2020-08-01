@@ -4,7 +4,12 @@
 <ng-template #edit>
   <h2><input [(ngModel)]="currentTopic.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editTopic()"></h2>
 </ng-template>
+
+<!-- Add / Delete teacher buttons -->
+<a routerLink="/topics/{{currentTopicId}}/teacher/add" class="btn btn-primary mr-2">Add Teacher</a>
+<a routerLink="/topics/{{currentTopicId}}/teacher/delete" class="btn btn-primary mr-2">Delete Teacher</a>
 <hr>
+<router-outlet></router-outlet>
 
 <!-- Lessons's list -->
 <h4 class="mx-3 mb-4">Lessons</h4>
