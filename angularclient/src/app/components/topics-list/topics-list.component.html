@@ -12,7 +12,7 @@
 <router-outlet></router-outlet>
 <!-- Topic's list -->
 <h4 class="my-4">Topics</h4>
-<div id="topics-list">
+<div id="topics-list mr-5" >
   <ul class="list-group" *ngFor="let tempTopic of topics">
   <li class="list-group-item list-group-item-action">
   <a routerLink="/topics/{{ tempTopic.id }}" routerLinkActive="active-link">{{tempTopic.name}}</a>
@@ -24,7 +24,7 @@
 <!-- Add topic -->
 <div>
   <h4 class="my-4">Add new topic</h4>
-  <div class="form-group">
+  <div class="form-group mr-5">
     <input type="text" class="form-control" placeholder="Topic name" [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
