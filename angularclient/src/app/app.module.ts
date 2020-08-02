@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {RouteGuardService} from "./services/security/route-guard.service";
 import { StudentsListComponent } from './components/users/students-list/students-list.component';
+import { TeachersListComponent } from './components/users/teachers-list/teachers-list.component';
+import { SearchComponent } from './components/search/search.component';
 import {RegistrationComponent} from "./components/registration/registration.component";
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService] },
+  {path: 'search/:keyword', component: LessonsListComponent, canActivate:[RouteGuardService] },
   {path: 'course/:id', component: TopicsListComponent, canActivate:[RouteGuardService],
     children: [{path: 'student/:action', component: StudentsListComponent}] },
   {path: 'courses', component: CoursesListComponent, canActivate:[RouteGuardService] },
@@ -39,8 +42,11 @@ const routes: Routes = [
     LessonsListComponent,
     LoginComponent,
     LogoutComponent,
+    StudentsListComponent,
+    TeachersListComponent,
+    SearchComponent
     RegistrationComponent,
-    StudentsListComponent
+
   ],
   imports: [
     RouterModule.forRoot(routes),

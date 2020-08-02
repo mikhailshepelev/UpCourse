@@ -1,4 +1,5 @@
 <!--Topic name-->
+<div *ngIf="!searchMode">
 <div *ngIf="isClicked==false; then show else edit "></div>
 <ng-template #show><h2 class="mx-3" (dblclick)="setClicked()">{{currentTopic?.name}}</h2></ng-template>
 <ng-template #edit>
@@ -10,7 +11,7 @@
 <a routerLink="/topics/{{currentTopicId}}/teacher/delete" class="btn btn-primary mr-2">Delete Teacher</a>
 <hr>
 <router-outlet></router-outlet>
-
+</div>
 <!-- Lessons's list -->
 <h4 class="mx-3 mb-4">Lessons</h4>
 <div id="lessons-list">
@@ -39,6 +40,7 @@
 </div>
 
 <!-- Add lesson -->
+<div *ngIf="!searchMode">
 <h4 class="mx-3 my-4">Add a new lesson</h4>
 <form class="form-inline mb-5">
   <div class="form-group">
@@ -51,4 +53,4 @@
   </div>
   <button type="submit" class="btn btn-primary mx-3"(click)="addNewLesson()">Add</button>
 </form>
-
+</div>

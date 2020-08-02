@@ -23,4 +23,9 @@ public class MainController {
         Principal principal = request.getUserPrincipal();
         return principal.toString();
     }
+
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+        return user;
+    }
 }
