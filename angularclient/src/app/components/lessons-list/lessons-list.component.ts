@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from "../../common/course";
 import {Topic} from "../../common/topic";
 import {TopicService} from "../../services/topic.service";
-import {CourseService} from "../../services/course.service";
 import {ActivatedRoute} from "@angular/router";
 import {LessonService} from "../../services/lesson.service";
 import {Lesson} from "../../common/lesson";
@@ -21,6 +19,9 @@ export class LessonsListComponent implements OnInit {
   lessonDate;
   isClicked = false;
   todayDate = new Date();
+  searchMode: boolean;
+
+
 
   constructor(private topicService: TopicService,
               private lessonService: LessonService,
@@ -31,7 +32,7 @@ export class LessonsListComponent implements OnInit {
       this.listLessons();
     });
 
-    this.getCurrentTopic();
+
 
   }
 
@@ -68,20 +69,30 @@ export class LessonsListComponent implements OnInit {
 
   listLessons() {
 
-    //check if "id" parameter is available
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
-    if (hasCategoryId) {
-      // get 'id' and convert it into number from string using for that '+' before statement
-      this.currentTopicId = +this.route.snapshot.paramMap.get('id');
+    if (this.searchMode) {
+      this.handleSearchLessons();
     }
+    else {
 
-    this.lessonService.getLessonsList(this.currentTopicId).subscribe(
-      data => {
-        this.lessons = data;
+
+      //check if "id" parameter is available
+      const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+      if (hasCategoryId) {
+        // get 'id' and convert it into number from string using for that '+' before statement
+        this.currentTopicId = +this.route.snapshot.paramMap.get('id');
       }
-    )
 
+      this.lessonService.getLessonsList(this.currentTopicId).subscribe(
+        data => {
+          this.lessons = data;
+        }
+      )
+
+      this.getCurrentTopic();
+    }
 
   }
 
@@ -96,6 +107,19 @@ export class LessonsListComponent implements OnInit {
 
   setClicked() {
     this.isClicked = true;
+  }
+
+  // search for lessons
+  handleSearchLessons() {
+
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
+
+    // now search for the products using keyword
+    this.lessonService.searchLessons(theKeyword).subscribe(
+      data => {
+        this.lessons = data;
+      }
+    )
   }
 
 }

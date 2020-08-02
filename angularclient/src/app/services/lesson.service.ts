@@ -44,6 +44,16 @@ export class LessonService {
     return this.httpClient.delete(url, {headers: this.headers})
   }
 
+
+  searchLessons(theKeyword: string): Observable<Lesson[]> {
+
+    // need to build URL based on the keyword
+    const searchUrl = `${this.baseUrl}/search/findBySubjectContaining?subject=${theKeyword}`;
+    return this.httpClient.get<GetResponseLessons>(searchUrl).pipe(
+      map(response => response._embedded.lessons)
+    );
+  }
+
 }
 
 interface GetResponseLessons {
