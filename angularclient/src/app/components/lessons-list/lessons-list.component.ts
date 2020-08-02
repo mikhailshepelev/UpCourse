@@ -17,6 +17,8 @@ export class LessonsListComponent implements OnInit {
   lessons: Lesson[];
   lessonSubject;
   lessonDate;
+  lessonStartTime;
+  lessonEndTime;
   isClicked = false;
   todayDate = new Date();
   searchMode: boolean;
@@ -40,7 +42,7 @@ export class LessonsListComponent implements OnInit {
   addNewLesson() {
     this.lessonService.postJson(new Lesson(this.lessonSubject,
       this.lessonService.getBaseUrl()+ '/' + this.currentTopicId,
-            this.lessonDate)).subscribe(
+            this.lessonDate, + '/' + this.lessonStartTime, + '/' + this.lessonEndTime)).subscribe(
       data => {
         console.log(data)
         this.listLessons();

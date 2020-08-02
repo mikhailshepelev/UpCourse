@@ -156,13 +156,13 @@ VALUES
 
 INSERT INTO lesson
 VALUES
-(1, '2020-10-15', 'Introduction to Java', 1),
-(2, '2020-10-18', 'Hello world project', 1),
-(3, '2020-10-24', 'Data types and variables', 1),
-(4, '2020-10-25', 'Statements in Java', 1),
-(5, '2020-11-01', 'Operators, Operands and Expressions', 1),
-(6, '2020-11-01', 'Spring Overview', 5),
-(7, '2020-11-11', 'Spring XML Configuration', 5),
-(8, '2020-11-12', 'Spring Configuration with Java Annotations', 5),
-(9, '2020-11-19', 'Spring MVC', 5),
-(10, '2020-11-25', 'Spring Security', 5)
+(1, '2020-10-15', '14:00:00', '06:00:00', 'Introduction to Java', 1),
+(2, '2020-10-18', '15:00:00', '07:00:00', 'Hello world project', 1),
+(3, '2020-10-24', '10:15:00', '06:15:00', 'Data types and variables', 1),
+(4, '2020-10-25', '16:00:00', '07:00:00', 'Statements in Java', 1),
+(5, '2020-11-01', '15:00:00', '08:15:00', 'Operators, Operands and Expressions', 1),
+(6, '2020-11-01', '16:00:00', '08:30:00', 'Spring Overview', 5),
+(7, '2020-11-11', '14:00:00', '08:00:00', 'Spring XML Configuration', 5),
+(8, '2020-11-12', '15:30:00', '08:00:00', 'Spring Configuration with Java Annotations', 5),
+(9, '2020-11-19', '17:00:00', '09:00:00', 'Spring MVC', 5),
+(10, '2020-11-25', '16:15:00', '08:15:00', 'Spring Security', 5)
