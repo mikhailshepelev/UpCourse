@@ -49,6 +49,10 @@ public class User {
     )
     private List<Course> courses;
 
+   @OneToMany(mappedBy = "teacher",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Topic> topics;
+
     public User(String firstName) {
         this.firstName = firstName;
     }

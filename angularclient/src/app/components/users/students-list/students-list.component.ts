@@ -27,7 +27,6 @@ export class StudentsListComponent implements OnInit {
         this.getDeleteStudentsList();
       }
     });
-    console.log(this.courseId);
   }
 
   getAddStudentsList() {

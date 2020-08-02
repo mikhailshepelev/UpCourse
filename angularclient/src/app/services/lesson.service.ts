@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Topic} from "../common/topic";
 import {map} from "rxjs/operators";
 import {Lesson} from "../common/lesson";
 

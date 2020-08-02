@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 import {Topic} from "../common/topic";
-import {Course} from "../common/course";
 
 @Injectable({
   providedIn: 'root'

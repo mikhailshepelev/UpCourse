@@ -1,0 +1,15 @@
+<div>
+  <h4 class="my-4" *ngIf="routeParam=='add'">Add Teacher</h4>
+  <h4 class="my-4" *ngIf="routeParam=='delete'">Delete Teacher</h4>
+  <a href="/topics/{{topicId}}">Close</a>
+</div>
+
+<div id="topics-list">
+  <ul class="list-group" *ngFor="let tempTeacher of teachers">
+    <li class="list-group-item list-group-item-action">
+      {{tempTeacher.id}} {{tempTeacher.firstName}} {{tempTeacher.lastName}}
+      <button *ngIf="routeParam=='add'" type="submit" class="btn btn-primary float-right" (click)="addTeacherToTopic(tempTeacher.id)">Add</button>
+      <button *ngIf="routeParam=='delete'" type="submit" class="btn btn-primary float-right" (click)="deleteTeacherFromTopic(tempTeacher.id)">Delete</button>
+    </li>
+  </ul>
+</div>

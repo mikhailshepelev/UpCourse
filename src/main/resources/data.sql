@@ -166,5 +166,3 @@ VALUES
 (8, '2020-11-12', 'Spring Configuration with Java Annotations', 5),
 (9, '2020-11-19', 'Spring MVC', 5),
 (10, '2020-11-25', 'Spring Security', 5)
-
-

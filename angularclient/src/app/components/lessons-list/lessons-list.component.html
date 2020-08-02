@@ -4,11 +4,16 @@
 <ng-template #edit>
   <h2><input [(ngModel)]="currentTopic.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editTopic()"></h2>
 </ng-template>
-<hr class="mr-5">
+
+<!-- Add / Delete teacher buttons -->
+<a routerLink="/topics/{{currentTopicId}}/teacher/add" class="btn btn-primary mr-2">Add Teacher</a>
+<a routerLink="/topics/{{currentTopicId}}/teacher/delete" class="btn btn-primary mr-2">Delete Teacher</a>
+<hr>
+<router-outlet></router-outlet>
 
 <!-- Lessons's list -->
 <h4 class="mx-3 mb-4">Lessons</h4>
-<div id="lessons-list" class="mr-5">
+<div id="lessons-list">
 <table class="table">
   <thead>
   <tr>
@@ -28,13 +33,12 @@
   </tbody>
 </table>
 </div>
-<hr class="mr-5">
 
 <!-- Add lesson -->
 <h4 class="mx-3 my-4">Add a new lesson</h4>
 <form class="form-inline mb-5">
   <div class="form-group">
-    <label class="mx-3">Subject:</label>
+    <label class="mx-3">Lesson subject:</label>
     <input type="text" class="form-control"  [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
