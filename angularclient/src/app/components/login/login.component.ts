@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   username;
   password;
   invalidLogin = false;
+  clickRegister: boolean = false;
 
   constructor(private router: Router,
               public basicAuthenticationService : BasicAuthenticationService) {
@@ -33,6 +34,10 @@ export class LoginComponent implements OnInit {
             this.invalidLogin = true;
           }
         )
+    }
+
+    clickedRegister(){
+    this.clickRegister = true;
     }
 }
 
