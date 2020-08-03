@@ -1,7 +1,5 @@
 package ee.upcourse.trainingmanager.controller;
 
-import ee.upcourse.trainingmanager.model.Course;
-import ee.upcourse.trainingmanager.repository.CourseRepository;
 import ee.upcourse.trainingmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

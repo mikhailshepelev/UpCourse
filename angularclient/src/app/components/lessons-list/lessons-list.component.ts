@@ -4,6 +4,7 @@ import {TopicService} from "../../services/topic.service";
 import {ActivatedRoute} from "@angular/router";
 import {LessonService} from "../../services/lesson.service";
 import {Lesson} from "../../common/lesson";
+import {Timestamp} from "rxjs/internal-compatibility";
 
 @Component({
   selector: 'app-lessons-list',
@@ -42,9 +43,11 @@ export class LessonsListComponent implements OnInit {
   addNewLesson() {
     this.lessonService.postJson(new Lesson(this.lessonSubject,
       this.lessonService.getBaseUrl()+ '/' + this.currentTopicId,
-            this.lessonDate, + '/' + this.lessonStartTime, + '/' + this.lessonEndTime)).subscribe(
+            this.lessonDate, this.lessonStartTime, this.lessonEndTime)).subscribe(
       data => {
         console.log(data)
+        console.log(this.lessonStartTime);
+        console.log(this.lessonEndTime);
         this.listLessons();
       });
 
