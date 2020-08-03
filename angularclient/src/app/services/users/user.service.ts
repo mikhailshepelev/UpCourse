@@ -10,17 +10,17 @@ import {map} from "rxjs/operators";
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8080/users';
+  private registrationUrl = 'http://localhost:8080/registration';
 
-  getBaseUrl(): string {
-    return this.baseUrl;
+  getRegistrationUrl(): string {
+    return this.registrationUrl;
   }
 
   constructor(private httpClient: HttpClient) {
   }
 
   getUsersList(): Observable<User[]> {
-    return this.httpClient.get<GetResponseUsers>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponseUsers>(this.getRegistrationUrl()).pipe(
       map(response => response._embedded.users)
     );
   }
@@ -32,7 +32,7 @@ export class UserService {
   postJson<T>(user: User): Observable<T> {
     console.log(user)
     return this.httpClient.post<T>(
-      this.baseUrl,
+      this.getRegistrationUrl(),
       JSON.stringify(user),
       {headers: this.headers}
     )
