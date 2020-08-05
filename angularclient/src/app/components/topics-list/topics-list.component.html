@@ -12,19 +12,19 @@
              [(ngModel)]="currentCourse.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editCourse()">
 </ng-template>
 
-  <p><small class="text-muted">Double click on the course name to modify</small></p>
+  <p><small class="text-muted">Double click on course name to modify</small></p>
 </div>
 
 <!-- Add / Delete student buttons -->
 <a routerLink="/course/{{currentCourseId}}/student/add" class="btn btn-custom mr-2">Add student</a>
 <a routerLink="/course/{{currentCourseId}}/student/delete" class="btn btn-custom mr-2">Student list</a>
+<router-outlet></router-outlet>
 
   <hr class="mr-5">
-<router-outlet></router-outlet>
 
 <!-- Add topic -->
 <div id="add-topic" class="mr-5 my-4">
-  <h3 class="my-3 font-weight-bold">Add new topic</h3>
+  <h4 class="my-4 font-weight-bold">Add new topic</h4>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Topic name"
            [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
@@ -37,7 +37,7 @@
 <hr class="mr-5">
 
 <!-- Topic's list -->
-<h3 class="my-3 font-weight-bold">Topic List</h3>
+<h4 class="my-4 font-weight-bold">Topic List</h4>
 <div id="topics-list" class="mr-5">
   <ul class="list-group list-group-custom" *ngFor="let tempTopic of topics">
   <li class="list-group-item list-group-item-action">
