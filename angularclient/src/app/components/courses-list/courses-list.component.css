@@ -5,6 +5,33 @@
 }
 
 .list-group-custom .list-group-item:hover{
-  background-color: #B8DAFF;
+  background-color: #f0ffe8;
 }
+
+#course-list-item-text {
+  color: #239d60;
+  font-weight: bold;
+}
+
+#btn-add-course {
+  background-color: #a3de83;
+  font-weight: bolder;
+  min-width: 80px;
+}
+
+#btn-add-course:hover {
+  background-color: #239d60;
+}
+
+#btn-add-course:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+
 

@@ -3,17 +3,16 @@
   <app-login></app-login>
 </div>
 
-
 <!-- Page Wrapper -->
 <div id="wrapper" *ngIf="basicAuthService.isUserLoggedIn()">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/courses">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+      <div class="sidebar-brand-icon">
+        <img id="logo" src="assets\images\logo.png" alt="Apple on a book">
       </div>
       <div class="sidebar-brand-text mx-3">UpCourse</div>
     </a>
@@ -21,19 +20,19 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
       <a class="nav-link" routerLink="/courses" routerLinkActive="active-link">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fa fa-list-ul"></i>
         <span>Courses</span></a>
+      <a class="nav-link" routerLink="" routerLinkActive="active-link">
+        <i class="fa fa fa-user"></i>
+        <span>Teachers</span></a>
+      <a class="nav-link" routerLink="" routerLinkActive="active-link">
+        <i class="fa fa-users"></i>
+        <span>Students</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-<!--    <div class="text-center d-none d-md-inline">-->
-<!--      <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
-<!--    </div>-->
-
   </ul>
+
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->
@@ -67,7 +66,7 @@
                 <div class="input-group">
                   <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn" type="button">
                       <i class="fas fa-search fa-sm"></i>
                     </button>
                   </div>
@@ -186,8 +185,8 @@
           <!-- Nav Item - User Information -->
           <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-white-600 small">{{basicAuthService.getAuthenticatedUser()}}</span>
-              <img class="img-profile rounded-circle" src="assets/images/user.png">
+              <span class="mr-3 d-none d-lg-inline text-white-600">{{basicAuthService.getAuthenticatedUser()}}</span>
+              <img class="img-profile" src="../assets/images/useravatar.png" alt="Default avatar">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -207,7 +206,6 @@
               </a>
             </div>
           </li>
-
         </ul>
 
       </nav>
@@ -228,7 +226,11 @@
     <footer class="sticky-footer bg-white">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright &copy; Your Website 2020</span>
+          <div>Icons made by <a id="icon-ref1" href="http://www.freepik.com/" title="Freepik">Freepik</a>
+            and <a id="icon-ref2" href="https://www.flaticon.com/authors/ddara" title="dDara">dDara</a>
+            from <a id="icon-ref3" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+          <br>
+          <span>Copyright &copy; UpCourse 2020</span>
         </div>
       </div>
     </footer>
