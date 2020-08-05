@@ -1,15 +1,15 @@
 <div>
-  <h4 class="my-4" *ngIf="routeParam=='add'">Add Teacher</h4>
-  <h4 class="my-4" *ngIf="routeParam=='delete'">Delete Teacher</h4>
-  <a href="/topics/{{topicId}}">Close</a>
+  <h4 class="my-4 font-weight-bold" *ngIf="routeParam=='add'">Add teacher</h4>
+  <h4 class="my-4 font-weight-bold" *ngIf="routeParam=='delete'">Delete teacher</h4>
+  <a id="close-text-ref" href="/topics/{{topicId}}">Close</a>
 </div>
 
-<div id="topics-list">
-  <ul class="list-group" *ngFor="let tempTeacher of teachers">
+<div id="teacher-list" class="mt-2">
+  <ul class="list-group list-group-custom" *ngFor="let tempTeacher of teachers">
     <li class="list-group-item list-group-item-action">
       {{tempTeacher.firstName}} {{tempTeacher.lastName}}
-      <button *ngIf="routeParam=='add'" type="submit" class="btn btn-primary float-right" (click)="addTeacherToTopic(tempTeacher.id)">Add / Change</button>
-      <button *ngIf="routeParam=='delete'" type="submit" class="btn btn-primary float-right" (click)="deleteTeacherFromTopic(tempTeacher.id)">Delete</button>
+      <button *ngIf="routeParam=='add'" type="submit" class="btn btn-custom float-right" (click)="addTeacherToTopic(tempTeacher.id)">Add / Change</button>
+      <button *ngIf="routeParam=='delete'" type="submit" class="btn btn-dark float-right" (click)="deleteTeacherFromTopic(tempTeacher.id)">Delete</button>
     </li>
   </ul>
 </div>
