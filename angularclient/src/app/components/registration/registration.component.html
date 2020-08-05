@@ -1,3 +1,4 @@
+
 <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -17,7 +18,7 @@
                     <input type="text" class="form-control form-control-user" placeholder="First Name"
                     required="required" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
                     <div [hidden]="firstName.valid || firstName.pristine"
-                         class="alert alert-danger">
+                         class="alert alert-danger mt-2">
                       First Name is required
                     </div>
                   </div>
@@ -25,7 +26,7 @@
                     <input type="text" class="form-control form-control-user" placeholder="Last Name"
                            required="required" [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
                     <div [hidden]="lastName.valid || lastName.pristine"
-                         class="alert alert-danger">
+                         class="alert alert-danger mt-2">
                       Last Name is required
                     </div>
                   </div>
@@ -34,7 +35,7 @@
                   <input type="email" class="form-control form-control-user" placeholder="username"
                          required="required" [(ngModel)]="user.username" name="username" #username="ngModel">
                   <div [hidden]="username.valid || username.pristine"
-                       class="alert alert-danger">
+                       class="alert alert-danger mt-2">
                     Username is required
                   </div>
                 </div>
@@ -42,7 +43,7 @@
                   <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address"
                          required="required" [(ngModel)]="user.email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                   <div *ngIf="email.invalid && email.touched"
-                       class="alert alert-danger">
+                       class="alert alert-danger mt-2">
                     <div *ngIf="email.errors.pattern"> Email is invalid. Enter valid email address </div>
                     <div *ngIf="email.errors.required"> Email is required </div>
                   </div>
@@ -51,7 +52,7 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" class="form-control form-control-user" required #password="ngModel"
                     minlength="6"/>
-                    <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                    <div *ngIf="password.invalid && password.touched" class="alert alert-danger mt-2">
                       <div *ngIf="password.errors.required"> Password is required. </div>
                       <div *ngIf="password.errors.minlength"> Password should contain minumum 6 symbols </div>
                     </div>
@@ -59,22 +60,22 @@
 
                   <div class="col-sm-6">
                     <input type="password" [(ngModel)]="user.confirmpassword" name="confirmpassword" placeholder="Confirm Password" class="form-control form-control-user" required #confirmpassword="ngModel" pattern="{{ password.value }}" />
-                    <div *ngIf=" confirmpassword.invalid && confirmpassword.touched" class="alert alert-danger">
+                    <div *ngIf=" confirmpassword.invalid && confirmpassword.touched" class="alert alert-danger mt-2">
                       <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
                       <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block"
+                <button type="submit" class="btn btn-custom btn-user btn-block"
                         [disabled]="!heroForm.form.valid">Register Account</button>
               </form>
               </div>
               <hr>
               <div class="text-center">
-                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                <a id="forgot-pw-link" class="small" href="forgot-password.html">Forgot Password?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="login.html">Already have an account? Login!</a>
+                <a id="login-link" class="small" href="login.html">Already have an account? Login!</a>
               </div>
             </div>
           </div>
@@ -83,3 +84,4 @@
     </div>
 
   </div>
+

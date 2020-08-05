@@ -1,8 +1,5 @@
 body {
-  background-color: transparent;
-  min-height: 100vh;
-  border: 0;
-  border-radius: 27.5px;
+  background-color: #212125;
 }
 
 .login-card {
@@ -27,43 +24,47 @@ body {
 .login-card form {
   max-width: 326px;
 }
-
-.login-card .form-control {
-  border: 1px solid #d5dae2;
-  padding: 15px 25px;
-  margin-bottom: 20px;
-  min-height: 45px;
-  font-size: 13px;
-  line-height: 15;
-  font-weight: normal;
+.form-control:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.login-card .login-btn {
-  padding: 13px 20px 12px;
-  background-color: #4B71DD;
-  border-radius: 4px;
-  font-size: 17px;
-  font-weight: bold;
-  line-height: 20px;
-  color: #fff;
-  margin-bottom: 24px; }
-.login-card .login-btn:hover {
-  border: 1px solid #2D54C6;
-  background-color: #2D54C6;
-  color: #fff; }
-.login-card .forgot-password-link {
-  font-size: 14px;
-  color: #919aa3;
-  margin-bottom: 12px; }
-.login-card-footer-text {
-  font-size: 16px;
-  color: #0d2366;
-  margin-bottom: 60px; }
-@media (max-width: 767px) {
-  .login-card-footer-text {
-    margin-bottom: 24px; } }
-.login-card-footer-nav a {
-  font-size: 14px;
-  color: #919aa3; }
+.btn-custom {
+  background-color: #a3de83;
+  font-weight: bolder;
+  min-width: 150px;
+}
 
-/*# sourceMappingURL=login.css.map */
+.btn-custom:hover {
+  background-color: #239d60;
+}
+
+.btn-custom:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+#forgot-password-link, #create-account-link {
+  color: #239d60;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  color: white !important;
+  background-color: #239d60 !important;
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+  border-color: #a3de83 !important;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+  border-color: #a3de83 !important;
+}
+
+.custom-control-input:not(:disabled):active~.custom-control-label::before {
+  background-color: #d6f5dd !important;
+  border-color: #d6f5dd !important;
+}

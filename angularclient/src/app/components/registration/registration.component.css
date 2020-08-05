@@ -1,0 +1,23 @@
+
+.form-control:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.btn-custom {
+  background-color: #a3de83;
+  font-weight: bolder;
+}
+
+.btn-custom:hover {
+  background-color: #239d60;
+}
+
+.btn-custom:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+#forgot-pw-link, #login-link {
+  color: #239d60;
+}

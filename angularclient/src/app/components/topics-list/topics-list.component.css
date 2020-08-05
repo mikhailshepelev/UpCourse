@@ -1,4 +1,61 @@
+.btn-custom {
+  background-color: #a3de83;
+  font-weight: bolder;
+  min-width: 150px;
+}
+
+.btn-custom:hover {
+  background-color: #239d60;
+}
+
+.btn-custom:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.list-group-custom .list-group-item:hover{
+  background-color: #f0ffe8;
+}
+
+#topic-list-item-text {
+  color: #239d60;
+  font-weight: bold;
+}
+
+#course-name-heading {
+  color: #239d60;
+}
+
 #topics-list {
-  max-height:400px;
+  font-size: large;
+  max-height:300px;
   overflow: auto;
 }
+
+#course-name-heading-edit {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #239d60;
+  outline: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #239d60;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#course-name-heading-edit:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
