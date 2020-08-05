@@ -1,3 +1,4 @@
+<body>
 <!-- Show register page if user clicked register -->
 <div *ngIf=clickRegister>
  <app-registration></app-registration>
@@ -18,14 +19,16 @@
             <div class="col-lg-6">
               <div class="p-5">
                 <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  <h1 class="h4 text-gray-900 mb-4">Welcome to UpCourse!</h1>
                 </div>
                 <form class="user">
                   <div class="form-group">
-                    <input type="text" name="username" [(ngModel)]="username" class="form-control form-control-user" placeholder="Enter username...">
+                    <input type="text" name="username" [(ngModel)]="username"
+                           class="form-control form-control-user form-control-custom" placeholder="Enter username...">
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" [(ngModel)]="password" class="form-control form-control-user" placeholder="Password">
+                    <input type="password" name="password" [(ngModel)]="password"
+                           class="form-control form-control-user form-control-custom" placeholder="Password">
                   </div>
                   <div class="alert alert-warning" *ngIf="invalidLogin">Invalid Credentials</div>
                   <div class="form-group">
@@ -34,14 +37,14 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button (click)=handleBasicAuthLogin() class="btn btn-primary btn-user btn-block">Login</button>
+                  <button (click)=handleBasicAuthLogin() class="btn btn-custom btn-user btn-block">Login</button>
                 </form>
                 <hr>
                 <div class="text-center">
-                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  <a id="forgot-password-link" class="small" href="forgot-password.html">Forgot Password?</a>
                 </div>
                 <div class="text-center">
-                  <a class="small" routerLink="registration" (click)="clickedRegister()">Create an Account!</a>
+                  <a id="create-account-link" class="small" routerLink="registration" (click)="clickedRegister()">Create an Account!</a>
                 </div>
               </div>
             </div>
@@ -57,4 +60,5 @@
 
 </div>
 
+</body>
 

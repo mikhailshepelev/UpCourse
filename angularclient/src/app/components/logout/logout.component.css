@@ -1,7 +1,4 @@
-body {
-  background-color: transparent;
-}
-
-.container {
-  margin-top: 5%;
+#login-ref-text {
+  color: #239d60;
+  font-weight: bold;
 }
