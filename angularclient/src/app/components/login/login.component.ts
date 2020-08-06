@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.router.navigateByUrl(`/login`);
   }
 
   handleBasicAuthLogin() {
@@ -35,6 +36,21 @@ export class LoginComponent implements OnInit {
           }
         )
     }
+
+  handleJwtAuthLogin() {
+    this.basicAuthenticationService.executeJwtAuthenticationService(this.username, this.password)
+      .subscribe(
+        data => {
+          console.log(data)
+          this.router.navigate(['courses', this.username])
+          this.invalidLogin = false;
+        },
+        error => {
+          console.log(error)
+          this.invalidLogin = true;
+        }
+      )
+  }
 
     clickedRegister(){
     this.clickRegister = true;
