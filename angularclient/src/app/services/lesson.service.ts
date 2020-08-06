@@ -31,6 +31,7 @@ export class LessonService {
   });
 
   postJson<T>(data: any): Observable<T> {
+    console.log(JSON.stringify(data));
     return this.httpClient.post<T>(
       this.baseUrl,
       JSON.stringify(data),

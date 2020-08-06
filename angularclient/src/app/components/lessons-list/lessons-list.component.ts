@@ -22,6 +22,7 @@ export class LessonsListComponent implements OnInit {
   lessonEndTime;
   isClicked = false;
   todayDate = new Date();
+  timeNow = new Date().getTime();
   searchMode: boolean;
 
 

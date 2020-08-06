@@ -36,6 +36,14 @@
         <label class="mx-3">Date:</label>
         <input type="date" class="form-control" [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}">
       </div>
+      <div class="form-group">
+        <label class="mx-3">Start time:</label>
+        <input type="time" class="form-control" [(ngModel)]="lessonStartTime" min="{{timeNow | date:'H:mm':'UTC'}}" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label class="mx-3">End time:</label>
+        <input type="time" class="form-control" [(ngModel)]="lessonEndTime" [ngModelOptions]="{standalone: true}">
+      </div>
       <button type="submit" class="btn btn-custom mx-3"(click)="addNewLesson()">Add</button>
     </form>
   </div>
