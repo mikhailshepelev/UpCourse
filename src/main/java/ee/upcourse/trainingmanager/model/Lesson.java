@@ -1,5 +1,8 @@
 package ee.upcourse.trainingmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import ee.upcourse.trainingmanager.config.SqlTimeDeserializer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,8 +24,12 @@ public class Lesson {
 
     private Date date;
 
+    @JsonFormat(pattern = "HH:mm")
+    @JsonDeserialize(using = SqlTimeDeserializer.class)
     private Time startTime;
 
+    @JsonFormat(pattern = "HH:mm")
+    @JsonDeserialize(using = SqlTimeDeserializer.class)
     private Time endTime;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
