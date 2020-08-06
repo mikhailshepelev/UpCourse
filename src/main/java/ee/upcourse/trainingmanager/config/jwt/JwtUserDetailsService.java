@@ -1,4 +1,8 @@
-package ee.upcourse.trainingmanager.config;
+package ee.upcourse.trainingmanager.config.jwt;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import ee.upcourse.trainingmanager.model.Role;
 import ee.upcourse.trainingmanager.model.User;
@@ -11,14 +15,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+@Service
+public class JwtUserDetailsService implements UserDetailsService {
 
-//@Service
-public class MyUserDetailsService implements UserDetailsService {
-
-    //@Autowired
+    @Autowired
     private UserRepository userRepository;
 
     @Override

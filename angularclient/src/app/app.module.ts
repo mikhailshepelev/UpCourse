@@ -28,8 +28,7 @@ const routes: Routes = [
     children: [{path: 'student/:action', component: StudentsListComponent}] },
   {path: 'courses', component: CoursesListComponent, canActivate:[RouteGuardService] },
   {path: 'topics', component: TopicsListComponent, canActivate:[RouteGuardService] },
-  {path: 'topics/:id', component: LessonsListComponent, canActivate:[RouteGuardService],
-      children: [{path: 'teacher/:action', component: TeachersListComponent}] },
+  {path: 'topics/:id', component: LessonsListComponent, canActivate:[RouteGuardService] },
 
   //{path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '/courses', pathMatch: 'full', canActivate:[RouteGuardService] },
@@ -47,7 +46,6 @@ const routes: Routes = [
     TeachersListComponent,
     SearchComponent,
     RegistrationComponent,
-
   ],
   imports: [
     RouterModule.forRoot(routes),
