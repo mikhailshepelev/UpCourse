@@ -41,7 +41,7 @@
         <input type="date" class="form-control flex-fill"
                [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}"
                [ngModelOptions]="{standalone: true}">
-      
+
         <label class="mx-3">Start time:</label>
         <input type="time" class="form-control flex-fill" 
                [(ngModel)]="lessonStartTime" min="{{timeNow | date:'H:mm':'UTC'}}" [ngModelOptions]="{standalone: true}">
@@ -51,7 +51,7 @@
         <input type="time" class="form-control flex-fill" 
                [(ngModel)]="lessonEndTime" [ngModelOptions]="{standalone: true}">
 
-      <button type="submit" class="btn btn-custom"(click)="addNewLesson()">Add</button>
+      <button type="submit" class="btn btn-custom ml-3"(click)="addNewLesson()">Add</button>
       </div>
     </form>
   </div>
