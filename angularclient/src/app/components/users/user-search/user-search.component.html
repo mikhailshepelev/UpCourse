@@ -1,0 +1,28 @@
+<form class="d-none d-sm-inline-block form-inline mr-auto pl-3 ml-4 md-3 my-2 my-md-0 mw-100 navbar-search">
+  <div class="input-group">
+    <input #myInput type="text" class="form-control border-0 small bg-dark text-light"
+           placeholder="Search by username..." aria-label="Search" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button id="user-search-button" (click)="getUserByUsername(myInput.value)" class="btn btn-dark">
+        <i class="fas fa-search fa-sm"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="user != undefined">
+  <br><br>
+  <ul>
+    <li>First name: {{user.firstName}}</li>
+    <li>Last name: {{user.lastName}}</li>
+    <li>Email: {{user.email}}</li>
+    <li>Username: {{user.username}}</li>
+    <li><label for="isTeacher">Teacher:</label>
+      <input id="isTeacher"
+             type="checkbox" class="ml-3"
+             [checked]="isTeacher"
+             (change)="changeRole()"/>
+    </li>
+  </ul>
+
+</div>
