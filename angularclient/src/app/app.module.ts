@@ -17,6 +17,7 @@ import { StudentsListComponent } from './components/users/students-list/students
 import { TeachersListComponent } from './components/users/teachers-list/teachers-list.component';
 import { SearchComponent } from './components/search/search.component';
 import {RegistrationComponent} from "./components/registration/registration.component";
+import { UserSearchComponent } from './components/users/user-search/user-search.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -30,8 +31,7 @@ const routes: Routes = [
   {path: 'topics', component: TopicsListComponent, canActivate:[RouteGuardService] },
   {path: 'topics/:id', component: LessonsListComponent, canActivate:[RouteGuardService],
     children: [{path: 'teacher/:action', component: TeachersListComponent}] },
-
-  //{path: '', redirectTo: '', pathMatch: 'full'},
+  {path: 'user-search', component: UserSearchComponent, canActivate:[RouteGuardService]},
   {path: '**', redirectTo: '/courses', pathMatch: 'full', canActivate:[RouteGuardService] },
 ];
 
@@ -47,6 +47,7 @@ const routes: Routes = [
     TeachersListComponent,
     SearchComponent,
     RegistrationComponent,
+    UserSearchComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
