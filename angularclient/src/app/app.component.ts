@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BasicAuthenticationService} from "./services/security/basic-authentication.service";
-import {Lesson} from "./common/lesson";
-import {Course} from "./common/course";
-import {Topic} from "./common/topic";
-import {User} from "./common/user";
+
 
 @Component({
   selector: 'app-root',
@@ -11,6 +8,7 @@ import {User} from "./common/user";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  title: Function;
 
   constructor(public basicAuthService : BasicAuthenticationService) { }
 

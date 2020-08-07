@@ -1,29 +1,31 @@
 <div class="container mx-4">
 
 <!--Topic name-->
-  <div id="topic-name" class="mt-5 mr-5">
-<div *ngIf="!searchMode">
-<div *ngIf="isClicked==false; then show else edit "></div>
+  <div *ngIf="!searchMode">
+    <div id="topic-name" class="mt-5 mr-5">
 
-<ng-template #show><h2 id="topic-name-heading" class="font-weight-bold"
-                       (dblclick)="setClicked()">{{currentTopic?.name}}</h2>
-</ng-template>
+      <div *ngIf="isClicked==false; then show else edit "></div>
 
-<ng-template #edit>
-  <h2><input id="topic-name-heading-edit" class="form-control"
-    [(ngModel)]="currentTopic.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editTopic()"></h2>
-</ng-template>
-  <p><small class="text-muted">Double click on topic name to modify</small></p>
-</div>
+      <ng-template #show><h2 id="topic-name-heading" class="font-weight-bold"
+                             (dblclick)="setClicked()">{{currentTopic?.name}}</h2>
+      </ng-template>
 
-<!-- Add / Delete teacher buttons -->
-<a routerLink="/topics/{{currentTopicId}}/teacher/add" class="btn btn-custom mr-2">Add Teacher</a>
-<a routerLink="/topics/{{currentTopicId}}/teacher/delete" class="btn btn-custom mr-2">Delete Teacher</a>
-<router-outlet></router-outlet>
-</div>
+      <ng-template #edit>
+        <h2><input id="topic-name-heading-edit" class="form-control"
+          [(ngModel)]="currentTopic.name" [ngModelOptions]="{standalone: true}" (keyup.enter)="editTopic()"></h2>
+      </ng-template>
+        <p><small class="text-muted">Double click on topic name to modify</small></p>
+
+
+      <!-- Add / Delete teacher buttons -->
+      <a routerLink="/topics/{{currentTopicId}}/teacher/add" class="btn btn-custom mr-2">Add Teacher</a>
+      <a routerLink="/topics/{{currentTopicId}}/teacher/delete" class="btn btn-custom mr-2">Delete Teacher</a>
+      <router-outlet></router-outlet>
+    </div>
+
 
   <hr class="mr-5">
-
+  </div>
   <!-- Add lesson -->
   <div *ngIf="!searchMode" class="mr-5">
     <h4 class="my-4 font-weight-bold">Add a new lesson</h4>
