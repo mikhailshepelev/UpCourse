@@ -27,28 +27,35 @@
   <hr class="mr-5">
   </div>
   <!-- Add lesson -->
-  <div *ngIf="!searchMode">
+  <div *ngIf="!searchMode" class="mr-5">
     <h4 class="my-4 font-weight-bold">Add a new lesson</h4>
-    <form class="form-inline mb-5">
-      <div class="form-group">
-        <label class="mx-3">Lesson subject:</label>
-        <input type="text" class="form-control"  [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
+    <form class="mb-5">
+      <div class="form-group form-inline">
+        <label class="mr-3">Subject:</label>
+        <input type="text" class="flex-fill form-control"  [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
       </div>
-      <div class="form-group">
-        <label class="mx-3">Date:</label>
-        <input type="date" class="form-control" [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}">
-      </div>
-      <div class="form-group">
+
+      <div class="form-group form-inline">
+
+        <label class="mr-3 pr-3">Date:</label>
+        <input type="date" class="form-control flex-fill"
+               [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}"
+               [ngModelOptions]="{standalone: true}">
+      
         <label class="mx-3">Start time:</label>
-        <input type="time" class="form-control" [(ngModel)]="lessonStartTime" min="{{timeNow | date:'H:mm':'UTC'}}" [ngModelOptions]="{standalone: true}">
-      </div>
-      <div class="form-group">
+        <input type="time" class="form-control flex-fill" 
+               [(ngModel)]="lessonStartTime" min="{{timeNow | date:'H:mm':'UTC'}}" [ngModelOptions]="{standalone: true}">
+      
+      
         <label class="mx-3">End time:</label>
-        <input type="time" class="form-control" [(ngModel)]="lessonEndTime" [ngModelOptions]="{standalone: true}">
+        <input type="time" class="form-control flex-fill" 
+               [(ngModel)]="lessonEndTime" [ngModelOptions]="{standalone: true}">
+
+      <button type="submit" class="btn btn-custom"(click)="addNewLesson()">Add</button>
       </div>
-      <button type="submit" class="btn btn-custom mx-3"(click)="addNewLesson()">Add</button>
     </form>
   </div>
+
 
   <hr class="mr-5">
 
