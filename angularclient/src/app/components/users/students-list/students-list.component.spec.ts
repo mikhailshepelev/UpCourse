@@ -30,14 +30,14 @@ describe('StudentsListComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-  //
-  // it('should get add students list from student service', () => {
-  //   fixture = TestBed.createComponent(StudentsListComponent);
-  //   component = fixture.debugElement.componentInstance;
-  //   let studentService = fixture.debugElement.injector.get(StudentService);
-  //   expect(studentService.getAddStudentsList).toEqual(component.getAddStudentsList);
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should get add students list from student service', () => {
+    fixture = TestBed.createComponent(StudentsListComponent);
+    component = fixture.debugElement.componentInstance;
+    let studentService = fixture.debugElement.injector.get(StudentService);
+    expect(studentService.getAddStudentsList).toEqual(component.getAddStudentsList);
+  });
 });
