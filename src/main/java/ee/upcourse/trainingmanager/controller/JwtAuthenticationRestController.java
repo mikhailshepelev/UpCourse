@@ -1,9 +1,13 @@
-package ee.upcourse.trainingmanager.config.jwt;
+package ee.upcourse.trainingmanager.controller;
 
 import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ee.upcourse.trainingmanager.config.jwt.*;
+import ee.upcourse.trainingmanager.model.User;
+import ee.upcourse.trainingmanager.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -14,13 +18,9 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class JwtAuthenticationRestController {
@@ -37,26 +37,30 @@ public class JwtAuthenticationRestController {
     @Autowired
     private UserDetailsService jwtUserDetailsService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
-            throws AuthenticationException {
+            throws JwtAuthenticationException {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
         final UserDetails userDetails = jwtUserDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
 
+        log.info(userDetails.getAuthorities().toString());
+
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtTokenResponse(token));
+        return ResponseEntity.ok(new JwtTokenResponse(token, userDetails.getUsername(), userDetails.getAuthorities()));
     }
 
-    @RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
+    @GetMapping("${jwt.refresh.token.uri}")
     public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
         String authToken = request.getHeader(tokenHeader);
         final String token = authToken.substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        //JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
 
         if (jwtTokenUtil.canTokenBeRefreshed(token)) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);
@@ -66,8 +70,8 @@ public class JwtAuthenticationRestController {
         }
     }
 
-    @ExceptionHandler({ AuthenticationException.class })
-    public ResponseEntity<String> handleAuthenticationException(AuthenticationException e) {
+    @ExceptionHandler({ JwtAuthenticationException.class })
+    public ResponseEntity<String> handleAuthenticationException(JwtAuthenticationException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
     }
 
@@ -78,9 +82,25 @@ public class JwtAuthenticationRestController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
-            throw new AuthenticationException("USER_DISABLED", e);
+            throw new JwtAuthenticationException("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
-            throw new AuthenticationException("INVALID_CREDENTIALS", e);
+            throw new JwtAuthenticationException("INVALID_CREDENTIALS", e);
+        }
+    }
+
+    @GetMapping("/jwt/user")
+    public ResponseEntity<?> getAuthenticatedUser(HttpServletRequest request) {
+        String authToken = request.getHeader(tokenHeader);
+        final String token = authToken.substring(7);
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        User user = userService.getByUsername(username);
+        JwtUser jwtUser = JwtUserFactory.create(user);
+
+        if (username == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        else {
+            return ResponseEntity.ok(jwtUser);
         }
     }
 }
