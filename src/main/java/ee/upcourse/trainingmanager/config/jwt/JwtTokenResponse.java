@@ -1,18 +1,21 @@
 package ee.upcourse.trainingmanager.config.jwt;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.io.Serializable;
+import java.util.Collection;
+
+@Data
+@AllArgsConstructor
 public class JwtTokenResponse implements Serializable {
 
-    private static final long serialVersionUID = 8317676219297719109L;
-
-    private final String token;
+    private String token;
+    private String username;
+    private Collection<? extends GrantedAuthority> authorities;
 
     public JwtTokenResponse(String token) {
         this.token = token;
-    }
-
-    public String getToken() {
-        return this.token;
     }
 }

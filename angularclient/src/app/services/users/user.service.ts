@@ -39,6 +39,15 @@ export class UserService {
     )
   }
 
+  //TODO: complete this method
+  putJson<T>(user: User): Observable<T> {
+    console.log(user)
+    return this.httpClient.put<T>(`${this.baseUrl}/edit-user`,
+      JSON.stringify(user),
+      {headers: this.headers}
+    )
+  }
+
   getUserByUsername(username: string) {
 
     // need to build URL based on the keyword
@@ -63,7 +72,6 @@ export class UserService {
         });
   }
 
-
   addTeacherRole(userId: number) {
     const searchUrl = `${this.baseUrl}/users/${userId}/roles/`;
     const role = `${this.baseUrl}/roles/3`;
@@ -71,7 +79,11 @@ export class UserService {
       .subscribe(data => {
       console.log('role changed - Teacher');
     }, error => {console.log("error")});
+  }
 
+  getLoggedUser(){
+    const url = `${this.baseUrl}/jwt/user`;
+    return this.httpClient.get<User>(url);
   }
 }
 

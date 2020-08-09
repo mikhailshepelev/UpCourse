@@ -21,17 +21,35 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Transactional
     @Override
     public void saveRegisteredUser(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         try {
-            Role role = roleRepository.findByName("STUDENT");
+            Role role = roleRepository.findByName("ROLE_STUDENT");
             user.setRole(role);
         } catch (Exception e){
             e.printStackTrace();
         }
         userRepository.save(user);
+    }
+
+    @Override
+    public void editUserProperties(User user) {
+        User oldVersionOfUser = userRepository.findByUsername(user.getUsername());
+
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+
+        oldVersionOfUser.setPassword(encodedPassword);
+        oldVersionOfUser.setEmail(user.getEmail());
+        oldVersionOfUser.setFirstName(user.getFirstName());
+        oldVersionOfUser.setLastName(user.getLastName());
+
+        userRepository.save(oldVersionOfUser);
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

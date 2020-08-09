@@ -4,4 +4,7 @@ import ee.upcourse.trainingmanager.model.User;
 
 public interface UserService {
     void saveRegisteredUser(User user);
+    void editUserProperties(User user);
+    User getByUsername(String username);
+
 }
