@@ -9,6 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -51,5 +54,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public List<String> getAllUsernames() {
+        List<User> allUsers = (List<User>) userRepository.findAll();
+        List<String> listOfUsernames = new ArrayList<>();
+        for(User s : allUsers){
+            listOfUsernames.add(s.getUsername());
+        }
+        return listOfUsernames;
     }
 }

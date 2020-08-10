@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from "@angular/common/http";
+import {Observable, of, throwError} from "rxjs";
 import {BasicAuthenticationService} from "./basic-authentication.service";
+import {catchError, map, tap} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +16,8 @@ import {BasicAuthenticationService} from "./basic-authentication.service";
 export class HttpIntercepterService implements HttpInterceptor{
 
   constructor(
-    private basicAuthenticationService : BasicAuthenticationService
+    private basicAuthenticationService : BasicAuthenticationService,
+    private router: Router
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -26,6 +34,19 @@ export class HttpIntercepterService implements HttpInterceptor{
         }
       )
     }
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error) => {
+        switch (error.status) {
+          case 400:
+            this.router.navigate(['error-400']);
+            break;
+          case 403:
+            this.router.navigate(['error-403']);
+            break;
+          default: this.router.navigate(['error']);
+        }
+        return throwError(error.message);
+      })
+    )
   }
 }

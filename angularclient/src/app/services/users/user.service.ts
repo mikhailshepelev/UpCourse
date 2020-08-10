@@ -85,6 +85,11 @@ export class UserService {
     const url = `${this.baseUrl}/jwt/user`;
     return this.httpClient.get<User>(url);
   }
+
+  getAllUsernames(){
+    const url = `${this.baseUrl}/get-usernames`;
+    return this.httpClient.get<string[]>(url);
+  }
 }
 
 interface GetResponseUsers {
