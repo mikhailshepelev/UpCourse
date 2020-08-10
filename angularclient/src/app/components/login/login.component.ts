@@ -22,27 +22,13 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(`/login`);
   }
 
-  handleBasicAuthLogin() {
-      this.basicAuthenticationService.executeBasicAuthenticationService(this.username, this.password)
-        .subscribe(
-          data => {
-            console.log(data)
-            this.router.navigate(['courses', this.username])
-            this.invalidLogin = false;
-          },
-          error => {
-            console.log(error)
-            this.invalidLogin = true;
-          }
-        )
-    }
-
   handleJwtAuthLogin() {
     this.basicAuthenticationService.executeJwtAuthenticationService(this.username, this.password)
       .subscribe(
         data => {
           console.log(data)
-          this.router.navigate(['courses', this.username])
+          //TODO: route depending on role
+          this.router.navigate(['courses'])
           this.invalidLogin = false;
         },
         error => {
