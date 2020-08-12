@@ -26,15 +26,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveRegisteredUser(User user) {
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        try {
-            Role role = roleRepository.findByName("ROLE_STUDENT");
-            user.setRole(role);
-        } catch (Exception e){
-            e.printStackTrace();
+
+        User userWithSameUsername = userRepository.findByUsername(user.getUsername());
+        User userWithSameEmail = userRepository.findByEmail(user.getEmail());
+        if (userWithSameUsername != null || userWithSameEmail != null) {
+            try {
+                throw new Exception("User with same username or email already registered");
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
-        userRepository.save(user);
+        else {
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+            try {
+                Role role = roleRepository.findByName("ROLE_STUDENT");
+                user.setRole(role);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            userRepository.save(user);
+        }
     }
 
     @Override
@@ -64,5 +76,15 @@ public class UserServiceImpl implements UserService {
             listOfUsernames.add(s.getUsername());
         }
         return listOfUsernames;
+    }
+
+    @Override
+    public List<String> getAllEmails() {
+        List<User> allUsers = (List<User>) userRepository.findAll();
+        List<String> listOfEmails = new ArrayList<>();
+        for(User s : allUsers){
+            listOfEmails.add(s.getEmail());
+        }
+        return listOfEmails;
     }
 }
