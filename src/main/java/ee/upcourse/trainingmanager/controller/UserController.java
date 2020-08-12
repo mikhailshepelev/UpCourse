@@ -29,4 +29,9 @@ public class UserController {
     public List<String> getAllUsernames(){
         return userService.getAllUsernames();
     }
+
+    @GetMapping("/get-emails")
+    public List<String> getAllEmails(){
+        return userService.getAllEmails();
+    }
 }

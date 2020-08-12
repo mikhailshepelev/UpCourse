@@ -9,4 +9,5 @@ public interface UserService {
     void editUserProperties(User user);
     User getByUsername(String username);
     List<String> getAllUsernames();
+    List<String> getAllEmails();
 }

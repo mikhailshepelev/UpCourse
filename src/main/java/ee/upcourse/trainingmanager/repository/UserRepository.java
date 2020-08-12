@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByUsername(String username);
+    User findByEmail(String email);
 
     Page<User> findByCoursesIsNotContainingAndRolesContains(Course course, Role role, Pageable pageable);
 

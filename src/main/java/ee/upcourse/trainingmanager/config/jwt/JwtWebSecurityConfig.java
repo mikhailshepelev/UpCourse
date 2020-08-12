@@ -67,7 +67,7 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/authenticate", "/registration").permitAll()
                 .antMatchers(HttpMethod.PUT, "/edit-user").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/get-usernames").permitAll()
+                .antMatchers(HttpMethod.GET, "/get-usernames", "/get-emails").permitAll()
                 .antMatchers("/courses/**",
                         "/topics/**",
                         "/lessons/**",

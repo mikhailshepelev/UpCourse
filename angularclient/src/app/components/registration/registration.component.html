@@ -1,22 +1,21 @@
-
 <div class="container">
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-7">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-              </div>
-              <div [hidden]="submitted">
+  <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+      <!-- Nested Row within Card Body -->
+      <div class="row">
+        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+        <div class="col-lg-7">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            </div>
+            <div [hidden]="submitted">
               <form class="user" (ngSubmit)="onSubmit()" #heroForm="ngForm">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" placeholder="First Name"
-                    required="required" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
+                           required="required" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
                     <div [hidden]="firstName.valid || firstName.pristine"
                          class="alert alert-danger mt-2">
                       First Name is required
@@ -51,7 +50,7 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" class="form-control form-control-user" required #password="ngModel"
-                    minlength="6"/>
+                           minlength="6"/>
                     <div *ngIf="password.invalid && password.touched" class="alert alert-danger mt-2">
                       <div *ngIf="password.errors.required"> Password is required. </div>
                       <div *ngIf="password.errors.minlength"> Password should contain minimum 6 symbols </div>
@@ -69,19 +68,18 @@
                 <button type="submit" class="btn btn-custom btn-user btn-block"
                         [disabled]="!heroForm.form.valid">Register Account</button>
               </form>
-              </div>
-              <hr>
-              <div class="text-center">
-                <a id="forgot-pw-link" class="small" href="forgot-password.html">Forgot Password?</a>
-              </div>
-              <div class="text-center">
-                <a id="login-link" class="small" href="login.html">Already have an account? Login!</a>
-              </div>
+            </div>
+            <hr>
+            <div class="text-center">
+              <a id="forgot-pw-link" class="small" href="forgot-password.html">Forgot Password?</a>
+            </div>
+            <div class="text-center">
+              <a id="login-link" class="small" href="login.html">Already have an account? Login!</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
+</div>
