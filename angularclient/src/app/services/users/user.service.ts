@@ -82,9 +82,9 @@ export class UserService {
   }
 
   //TODO THIS METHOD HAS BEEN CHANGED
-  async getLoggedUser(): Promise<User>{
-    const url = `${this.baseUrl}/jwt/user`;
-    return this.httpClient.get<User>(url).toPromise().then(response => response as User);
+  getLoggedUser(){
+    const url = `${this.baseUrl}//jwt/user`;
+    return this.httpClient.get<User>(url);
   }
 
   getAllUsernames(){
