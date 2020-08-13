@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {BasicAuthenticationService} from "../../services/security/basic-authentication.service";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   clickRegister: boolean = false;
 
   constructor(private router: Router,
-              public basicAuthenticationService : BasicAuthenticationService) {
+              public basicAuthenticationService : BasicAuthenticationService,
+              private appComponent: AppComponent) {
   }
 
   ngOnInit(): void {
@@ -42,8 +44,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data)
-          this.router.navigate(['courses', this.username])
+          this.router.navigate(['courses', this.username] );
           this.invalidLogin = false;
+          this.appComponent.getLoggedUserRoles();
         },
         error => {
           console.log(error)
@@ -55,5 +58,6 @@ export class LoginComponent implements OnInit {
     clickedRegister(){
     this.clickRegister = true;
     }
+
 }
 
