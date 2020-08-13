@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/users/user.service";
 import {User} from "../../common/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,7 +13,8 @@ export class EditProfileComponent implements OnInit {
   user : User;
   submitted = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getLoggedUser().subscribe(
@@ -29,5 +31,7 @@ export class EditProfileComponent implements OnInit {
         console.log(data)
         this.userService.getUsersList();
       });
+    //TODO: complete routing
+    //this.router.navigate(['courses'])
   }
 }

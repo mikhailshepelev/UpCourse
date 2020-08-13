@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
-import {RouterModule, Routes} from "@angular/router";
+import {Router, RouterModule, Routes} from "@angular/router";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CourseService} from "./services/course.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TopicsListComponent } from './components/topics-list/topics-list.component';
 import { LessonsListComponent } from './components/lessons-list/lessons-list.component';
 import {HttpIntercepterService} from "./services/security/http-intercepter.service";
@@ -19,11 +19,17 @@ import { SearchComponent } from './components/search/search.component';
 import {RegistrationComponent} from "./components/registration/registration.component";
 import { UserSearchComponent } from './components/users/user-search/user-search.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FourHundredErrorComponent } from './components/errors/400/four-hundred-error.component';
+import { FourHundredThreeErrorComponent } from './components/errors/403/four-hundred-three-error.component';
+import { GenericErrorComponent } from './components/errors/generic-error.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
+  {path: 'error-403', component: FourHundredThreeErrorComponent},
+  {path: 'error-400', component: FourHundredErrorComponent},
+  {path: 'error', component: GenericErrorComponent},
   {path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService] },
   {path: 'search/:keyword', component: LessonsListComponent, canActivate:[RouteGuardService] },
   {path: 'course/:id', component: TopicsListComponent, canActivate:[RouteGuardService],
@@ -34,7 +40,7 @@ const routes: Routes = [
     children: [{path: 'teacher/:action', component: TeachersListComponent}] },
   {path: 'user-search', component: UserSearchComponent, canActivate:[RouteGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate:[RouteGuardService] },
-  {path: '**', redirectTo: '/courses', pathMatch: 'full', canActivate:[RouteGuardService] },
+  {path: '**', redirectTo: '/error'},
 ];
 
 @NgModule({
@@ -51,12 +57,16 @@ const routes: Routes = [
     RegistrationComponent,
     UserSearchComponent,
     EditProfileComponent,
+    FourHundredErrorComponent,
+    FourHundredThreeErrorComponent,
+    GenericErrorComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterService, multi:true},

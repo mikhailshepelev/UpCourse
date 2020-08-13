@@ -81,9 +81,20 @@ export class UserService {
     }, error => {console.log("error")});
   }
 
+  //TODO THIS METHOD HAS BEEN CHANGED
   getLoggedUser(){
     const url = `${this.baseUrl}/jwt/user`;
     return this.httpClient.get<User>(url);
+  }
+
+  getAllUsernames(){
+    const url = `${this.baseUrl}/get-usernames`;
+    return this.httpClient.get<string[]>(url);
+  }
+
+  getAllEmails(){
+    const url = `${this.baseUrl}/get-emails`;
+    return this.httpClient.get<string[]>(url);
   }
 }
 

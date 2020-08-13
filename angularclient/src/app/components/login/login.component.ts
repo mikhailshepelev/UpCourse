@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data)
-          this.router.navigate(['courses', this.username] );
+          this.router.navigate(['courses']);
           this.invalidLogin = false;
           this.appComponent.getLoggedUserRoles();
         },

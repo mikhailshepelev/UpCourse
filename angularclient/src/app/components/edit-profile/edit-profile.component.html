@@ -20,6 +20,7 @@
 
       <h5 class="pl-3 my-3">Username: {{user.username}}</h5>
 
+      <div [hidden]="submitted">
       <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()" #editProfileForm="ngForm">
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
@@ -88,6 +89,7 @@
           </div>
         </div>
       </form>
+      </div>
     </div>
   </div>
 </div>
