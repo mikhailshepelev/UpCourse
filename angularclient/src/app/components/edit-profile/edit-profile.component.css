@@ -1,4 +1,8 @@
-#edit-avatar {
+#default-avatar {
+  max-width: 200px;
+}
+
+#actual-avatar {
   max-width: 200px;
 }
 

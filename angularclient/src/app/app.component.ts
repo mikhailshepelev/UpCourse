@@ -25,10 +25,8 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadScript();
-
+    this.getLoggedUserRoles();
   }
-
-  /** Load Custom JavaScript file */
 
   public loadScript() {
     let node = document.createElement("script");

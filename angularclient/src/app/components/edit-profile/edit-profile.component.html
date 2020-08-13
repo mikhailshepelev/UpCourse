@@ -2,16 +2,17 @@
   <h3 class="my-3 font-weight-bold">Edit profile</h3>
   <hr>
   <div class="row">
-    <!-- left column -->
-    <div class="col-md-3">
-      <div class="text-center">
-        <img src="assets/images/editavatar.png" id="edit-avatar" class="img-profile img-circle my-3" alt="avatar">
-        <h6 class="my-3">Upload a different photo</h6>
-        <span class="btn btn-custom btn-file">
-          Choose file <input type="file">
-        </span>
-      </div>
-    </div>
+<!--    &lt;!&ndash; left column &ndash;&gt;-->
+<!--    <div class="col-md-3" *ngIf="this.user.imageUrl==''">-->
+<!--      <div class="text-center">-->
+<!--        <img src="assets/images/editavatar.png" id="default-avatar" class="img-profile img-circle my-3" alt="avatar">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-3" *ngIf="this.user.imageUrl!=''">-->
+<!--      <div class="text-center">-->
+<!--        <img src="{{this.user.imageUrl}}" id="actual-avatar" class="img-profile img-circle my-3" alt="avatar">-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!-- edit form column -->
     <div class="col-md-9 personal-info">
@@ -21,74 +22,76 @@
       <h5 class="pl-3 my-3">Username: {{user.username}}</h5>
 
       <div [hidden]="submitted">
-      <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()" #editProfileForm="ngForm">
-        <div class="form-group">
-          <label class="col-lg-3 control-label">First name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text" placeholder="{{user.firstName}}"
-                   required="required" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
-            <div [hidden]="firstName.valid || firstName.pristine"
-                 class="alert alert-danger mt-2">
-              First Name is required
+        <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()" #editProfileForm="ngForm">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" placeholder="{{user.firstName}}"
+                     required="required" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
+              <div [hidden]="firstName.valid || firstName.pristine"
+                   class="alert alert-danger mt-2">
+                First Name is required
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Last name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text" placeholder="{{user.lastName}}"
-                   required="required" [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
-            <div [hidden]="lastName.valid || lastName.pristine"
-                 class="alert alert-danger mt-2">
-              Last Name is required
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" placeholder="{{user.lastName}}"
+                     required="required" [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
+              <div [hidden]="lastName.valid || lastName.pristine"
+                   class="alert alert-danger mt-2">
+                Last Name is required
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Email:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text" placeholder="{{user.email}}"
-                   required="required" [(ngModel)]="user.email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-            <div *ngIf="email.invalid && email.touched"
-                 class="alert alert-danger mt-2">
-              <div *ngIf="email.errors.pattern"> Email is invalid. Enter valid email address </div>
-              <div *ngIf="email.errors.required"> Email is required </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" placeholder="{{user.email}}"
+                     required="required" [(ngModel)]="user.email" name="email" #email="ngModel"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+              <div *ngIf="email.invalid && email.touched"
+                   class="alert alert-danger mt-2">
+                <div *ngIf="email.errors.pattern"> Email is invalid. Enter valid email address</div>
+                <div *ngIf="email.errors.required"> Email is required</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Password:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="password" placeholder="******" name="password"
-                   [(ngModel)]="user.password" required #password="ngModel" minlength="6">
-            <div *ngIf="password.invalid && password.touched" class="alert alert-danger mt-2">
-              <div *ngIf="password.errors.required"> Password is required. </div>
-              <div *ngIf="password.errors.minlength"> Password should contain minimum 6 symbols </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" placeholder="******" name="password"
+                     [(ngModel)]="user.password" required #password="ngModel" minlength="6">
+              <div *ngIf="password.invalid && password.touched" class="alert alert-danger mt-2">
+                <div *ngIf="password.errors.required"> Password is required.</div>
+                <div *ngIf="password.errors.minlength"> Password should contain minimum 6 symbols</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Confirm password:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="password" placeholder="******"
-                   [(ngModel)]="user.confirmpassword" name="confirmpassword"
-                   required #confirmpassword="ngModel" pattern="{{ password.value }}">
-            <div *ngIf=" confirmpassword.invalid && confirmpassword.touched" class="alert alert-danger mt-2">
-              <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
-              <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" placeholder="******"
+                     [(ngModel)]="user.confirmpassword" name="confirmpassword"
+                     required #confirmpassword="ngModel" pattern="{{ password.value }}">
+              <div *ngIf=" confirmpassword.invalid && confirmpassword.touched" class="alert alert-danger mt-2">
+                <div *ngIf="confirmpassword.errors.required"> Confirm password is required.</div>
+                <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label"></label>
-          <div class="col-md-8">
-            <button type="submit" class="btn btn-custom mr-3"
-                    [disabled]="!editProfileForm.form.valid">Save Changes</button>
-            <span></span>
-            <input type="reset" class="btn btn-dark" value="Cancel">
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <button type="submit" class="btn btn-custom mr-3"
+                      [disabled]="!editProfileForm.form.valid">Save Changes
+              </button>
+              <span></span>
+              <input type="reset" class="btn btn-dark" value="Cancel">
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
       </div>
     </div>
   </div>

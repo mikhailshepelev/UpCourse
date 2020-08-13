@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/users/user.service";
 import {User} from "../../common/user";
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-registration',
@@ -14,19 +13,38 @@ export class RegistrationComponent implements OnInit {
     '', '', '');
 
   submitted = false;
+  usernames: string[];
+  emails: string[];
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.userService.getAllUsernames().subscribe(
+      data => this.usernames = data
+    )
+    this.userService.getAllEmails().subscribe(
+      data => this.emails = data
+    )
   }
 
   onSubmit() {
-    this.submitted = true;
-    this.userService.postJson(this.user).subscribe(
-      data => {
-        console.log(data)
-        this.userService.getUsersList();
-      });
-  }
+    for (let username of this.usernames){
+      if (username === this.user.username) {
+        alert("Registration not successful. Username already exists")
+        return;
+      }
+    }
+    for (let email of this.emails){
+      if (email === this.user.email) {
+        alert("Registration not successful. The email address you have entered is already registered")
+        return;
+      }
+    }
+      this.submitted = true;
+      this.userService.postJson(this.user).subscribe(
+        data => {
+          this.userService.getUsersList();
+        });
+    }
 }
