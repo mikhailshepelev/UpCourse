@@ -22,6 +22,14 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { FourHundredErrorComponent } from './components/errors/400/four-hundred-error.component';
 import { FourHundredThreeErrorComponent } from './components/errors/403/four-hundred-three-error.component';
 import { GenericErrorComponent } from './components/errors/generic-error.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { registerLocaleData } from '@angular/common';
+import localeEt from '@angular/common/locales/et';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+registerLocaleData(localeEt);
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -40,6 +48,7 @@ const routes: Routes = [
     children: [{path: 'teacher/:action', component: TeachersListComponent}] },
   {path: 'user-search', component: UserSearchComponent, canActivate:[RouteGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate:[RouteGuardService] },
+  {path: 'calendar', component: CalendarComponent, canActivate:[RouteGuardService]},
   {path: '**', redirectTo: '/error'},
 ];
 
@@ -60,13 +69,16 @@ const routes: Routes = [
     FourHundredErrorComponent,
     FourHundredThreeErrorComponent,
     GenericErrorComponent,
+    CalendarComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterService, multi:true},

@@ -7,8 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,15 +21,9 @@ public class Lesson {
 
     private String subject;
 
-    private Date date;
+    private LocalDateTime startTime;
 
-    @JsonFormat(pattern = "HH:mm")
-    @JsonDeserialize(using = SqlTimeDeserializer.class)
-    private Time startTime;
-
-    @JsonFormat(pattern = "HH:mm")
-    @JsonDeserialize(using = SqlTimeDeserializer.class)
-    private Time endTime;
+    private LocalDateTime endTime;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "topic_id")
