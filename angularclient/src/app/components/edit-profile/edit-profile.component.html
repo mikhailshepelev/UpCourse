@@ -1,5 +1,5 @@
 <div class="container mx-4">
-  <h3 class="my-3 font-weight-bold">Edit profile</h3>
+  <h3 class="my-3 pl-3 font-weight-bold">Edit profile</h3>
   <hr>
   <div class="row">
 <!--    &lt;!&ndash; left column &ndash;&gt;-->
@@ -84,7 +84,7 @@
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <button type="submit" class="btn btn-custom mr-3"
+              <button type="submit" class="btn btn-add btn-custom mr-3"
                       [disabled]="!editProfileForm.form.valid">Save Changes
               </button>
               <span></span>
@@ -92,6 +92,9 @@
             </div>
           </div>
         </form>
+        <div id="alert-course-success" class="alert alert-success mr=5 collapse" role="alert">
+          Profile information updated!
+        </div>
       </div>
     </div>
   </div>
