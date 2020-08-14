@@ -53,6 +53,15 @@ public class UserServiceImpl implements UserService {
     public void editUserProperties(User user) {
         User oldVersionOfUser = userRepository.findByUsername(user.getUsername());
 
+        User userWithSameEmail = userRepository.findByEmail(user.getEmail());
+        if (userWithSameEmail != null) {
+            try {
+                throw new Exception("User with same email already registered");
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+
         String encodedPassword = passwordEncoder.encode(user.getPassword());
 
         oldVersionOfUser.setPassword(encodedPassword);

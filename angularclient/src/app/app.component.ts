@@ -30,8 +30,6 @@ export class AppComponent implements OnInit{
     }
   }
 
-  /** Load Custom JavaScript file */
-
   public loadScript() {
     let node = document.createElement("script");
     node.src = this.url;
