@@ -41,7 +41,7 @@ export class LessonService {
 
 
   deleteLesson(lessonId: number) {
-    const url = `http://localhost:8080/lessons/${lessonId}`;
+    const url = `${this.baseUrl}/${lessonId}`;
     return this.httpClient.delete(url, {headers: this.headers})
   }
 
@@ -53,6 +53,11 @@ export class LessonService {
     return this.httpClient.get<GetResponseLessons>(searchUrl).pipe(
       map(response => response._embedded.lessons)
     );
+  }
+
+  getAllLoggedUserLessons(username: string) {
+    const searchUrl = `http://localhost:8080/schedule/${username}`;
+    return this.httpClient.get<Lesson[]>(searchUrl);
   }
 
 }

@@ -19,6 +19,7 @@ import {Lesson} from "../../common/lesson";
 import {ActivatedRoute} from "@angular/router";
 import { DatePipe } from '@angular/common';
 import {CustomDateFormatter} from "./custom-date-formatter.provider";
+import {BasicAuthenticationService} from "../../services/security/basic-authentication.service";
 
 
 @Component({
@@ -53,7 +54,8 @@ export class CalendarComponent implements OnInit{
   activeDayIsOpen: boolean = true;
 
   constructor(private lessonService: LessonService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private basicAuthenticationService: BasicAuthenticationService ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -97,7 +99,7 @@ export class CalendarComponent implements OnInit{
   }
 
   listLessons() {
-    this.lessonService.getLessonsList(1).subscribe(
+    this.lessonService.getAllLoggedUserLessons(this.basicAuthenticationService.getAuthenticatedUser()).subscribe(
       data => {
         this.lessonsList = data;
         this.addLessonsToEvents();
