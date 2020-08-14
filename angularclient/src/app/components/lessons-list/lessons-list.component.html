@@ -62,7 +62,6 @@
   <tr>
     <th scope="col"></th>
     <th scope="col">Subject</th>
-    <th scope="col">Date</th>
     <th scope="col">Start time</th>
     <th scope="col">End time</th>
     <th scope="col"></th>
@@ -72,8 +71,8 @@
   <tr *ngFor="let tempLesson of lessons">
     <td scope="row"></td>
     <td>{{tempLesson.subject}}</td>
-    <td>{{tempLesson.startTime}}</td>
-    <td>{{tempLesson.endTime}}</td>
+    <td>{{tempLesson.startTime | date:'yyyy-MM-dd, HH:mm':'GMT+2'}}</td>
+    <td>{{tempLesson.endTime | date:'yyyy-MM-dd, HH:mm':'GMT+2'}}</td>
     <td><button type="submit" class="btn btn-dark" (click)="deleteLesson(tempLesson.id)">Delete</button></td>
   </tr>
   </tbody>
