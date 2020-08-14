@@ -1,9 +1,8 @@
 package ee.upcourse.trainingmanager.service;
 
-import ee.upcourse.trainingmanager.model.Lesson;
-
 import java.util.List;
+import ee.upcourse.trainingmanager.dto.*;
 
 public interface ScheduleService {
-    List<Lesson> getSchedule(String username);
+    List<ScheduleDTO> getSchedule(String username);
 }

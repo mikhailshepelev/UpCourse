@@ -23,7 +23,6 @@ public class Lesson {
 
     private LocalDateTime endTime;
 
-    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "topic_id")
     private Topic topic;
