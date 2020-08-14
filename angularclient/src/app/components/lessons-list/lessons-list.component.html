@@ -72,7 +72,6 @@
   <tr *ngFor="let tempLesson of lessons">
     <td scope="row"></td>
     <td>{{tempLesson.subject}}</td>
-    <td>{{tempLesson.date}}</td>
     <td>{{tempLesson.startTime}}</td>
     <td>{{tempLesson.endTime}}</td>
     <td><button type="submit" class="btn btn-dark" (click)="deleteLesson(tempLesson.id)">Delete</button></td>
