@@ -31,13 +31,13 @@
     <h4 class="my-4 font-weight-bold">Add a new lesson</h4>
     <form class="mb-5">
       <div class="form-group form-inline">
-        <label class="mr-3">Subject:</label>
+        <label class="mr-4 pr-2">Subject:</label>
         <input type="text" class="flex-fill form-control"  [(ngModel)]="lessonSubject" [ngModelOptions]="{standalone: true}">
       </div>
 
       <div class="form-group form-inline">
 
-        <label class="mx-3">Start time:</label>
+        <label class="mr-3">Start time:</label>
         <input type="datetime-local" class="form-control flex-fill"
                [(ngModel)]="lessonStartTime" min="{{todayDate | date:'yyyy-MM-dd, HH:mm':'GMT+2'}}" [ngModelOptions]="{standalone: true}">
 
@@ -46,9 +46,12 @@
         <input type="datetime-local" class="form-control flex-fill"
                [(ngModel)]="lessonEndTime" [ngModelOptions]="{standalone: true}">
 
-      <button type="submit" class="btn btn-custom ml-3"(click)="addNewLesson()">Add</button>
+      <button type="submit" class="btn btn-custom btn-add ml-3"(click)="addNewLesson()">Add</button>
       </div>
     </form>
+    <div id="alert-course-success" class="alert alert-success mr=5 collapse" role="alert">
+      New lesson added!
+    </div>
   </div>
 
 
