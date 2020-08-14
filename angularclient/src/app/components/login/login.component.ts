@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   password;
   invalidLogin = false;
   clickRegister: boolean = false;
+  clickResetPassword: boolean = false;
   loggedUserRoles: Role[];
 
   constructor(private router: Router,
@@ -69,6 +70,10 @@ export class LoginComponent implements OnInit {
     clickedRegister(){
     this.clickRegister = true;
     }
+
+    clickedResetPassword(){
+    this.clickResetPassword = true;
+  }
 
 
     checkRoles(): boolean {

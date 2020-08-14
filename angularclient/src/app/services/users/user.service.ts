@@ -96,7 +96,14 @@ export class UserService {
     const url = `${this.baseUrl}/get-emails`;
     return this.httpClient.get<string[]>(url);
   }
+
+  resetPassword(email: string): Observable<string> {
+    return this.httpClient.get<string>(`${this.baseUrl}/resetpassword/${email}`);
+  }
+
 }
+
+
 
 interface GetResponseUsers {
   _embedded: {

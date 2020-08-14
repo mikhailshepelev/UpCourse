@@ -1,5 +1,6 @@
 package ee.upcourse.trainingmanager.service;
 
+import ee.upcourse.trainingmanager.exception.EmailNotFoundException;
 import ee.upcourse.trainingmanager.model.Role;
 import ee.upcourse.trainingmanager.model.User;
 import ee.upcourse.trainingmanager.repository.RoleRepository;
@@ -7,8 +8,9 @@ import ee.upcourse.trainingmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.apache.commons.lang3.RandomStringUtils;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public void saveRegisteredUser(User user) {
@@ -95,5 +100,21 @@ public class UserServiceImpl implements UserService {
             listOfEmails.add(s.getEmail());
         }
         return listOfEmails;
+    }
+
+    @Override
+    public void resetPassword(String email) throws MessagingException, EmailNotFoundException {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new EmailNotFoundException("No user found for email: " + email);
+        }
+        String password = generatePassword();
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+        emailService.sendNewPasswordEmail(user.getFirstName(), password, user.getEmail());
+    }
+
+    private String generatePassword() {
+        return RandomStringUtils.randomAlphanumeric(10);
     }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
-import {Router, RouterModule, Routes} from "@angular/router";
+import { RouterModule, Routes} from "@angular/router";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CourseService} from "./services/course.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -28,6 +28,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { registerLocaleData } from '@angular/common';
 import localeEt from '@angular/common/locales/et';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
 registerLocaleData(localeEt);
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
+  {path: 'resetpassword', component: ResetpasswordComponent},
   {path: 'error-403', component: FourHundredThreeErrorComponent},
   {path: 'error-400', component: FourHundredErrorComponent},
   {path: 'error', component: GenericErrorComponent},
@@ -70,6 +72,7 @@ const routes: Routes = [
     FourHundredThreeErrorComponent,
     GenericErrorComponent,
     CalendarComponent,
+    ResetpasswordComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
