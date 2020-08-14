@@ -1,6 +1,7 @@
 package ee.upcourse.trainingmanager.service;
 
 import ee.upcourse.trainingmanager.model.*;
+import ee.upcourse.trainingmanager.dto.ScheduleDTO;
 import ee.upcourse.trainingmanager.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ScheduleServiceImpl implements ScheduleService{
     }
 
     @Override
-    public List<Lesson> getSchedule(String username) {
+    public List<ScheduleDTO> getSchedule(String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) try {
             throw new Exception("User with this username does not exist");
@@ -36,7 +37,8 @@ public class ScheduleServiceImpl implements ScheduleService{
         return getStudentSchedule(user);
     }
 
-    private List<Lesson> getStudentSchedule(User user) {
+    private List<ScheduleDTO> getStudentSchedule(User user) {
+        List<ScheduleDTO> schedule = new ArrayList<>();
         List<Lesson> lessonList = new ArrayList<>();
         List<Topic> topicList = new ArrayList<>();
         List<Course> listOfCourses = user.getCourses();
@@ -46,15 +48,22 @@ public class ScheduleServiceImpl implements ScheduleService{
         for (Topic topic : topicList) {
             lessonList.addAll(topic.getLessons());
         }
-        return lessonList;
+        for (Lesson lesson : lessonList){
+            schedule.add(new ScheduleDTO(lesson.getId(), lesson.getSubject(), lesson.getStartTime(), lesson.getEndTime()));
+        }
+        return schedule;
     }
 
-    private List<Lesson> getTeacherSchedule(User user) {
+    private List<ScheduleDTO> getTeacherSchedule(User user) {
+        List<ScheduleDTO> schedule = new ArrayList<>();
         List<Lesson> lessonList = new ArrayList<>();
         List<Topic> topicList = user.getTopics();
         for (Topic topic : topicList) {
             lessonList.addAll(topic.getLessons());
         }
-        return lessonList;
+        for (Lesson lesson : lessonList){
+            schedule.add(new ScheduleDTO(lesson.getId(), lesson.getSubject(), lesson.getStartTime(), lesson.getEndTime()));
+        }
+        return schedule;
     }
 }
