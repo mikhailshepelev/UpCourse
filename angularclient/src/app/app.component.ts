@@ -3,7 +3,7 @@ import {BasicAuthenticationService} from "./services/security/basic-authenticati
 import {UserService} from "./services/users/user.service";
 import {User} from "./common/user";
 import {Role} from "./common/role";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   title: Function;
-  isAdmin;
+  isAdmin = false;
   loggedUser: User;
   loggedUserRoles: Role[];
 
@@ -25,7 +25,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadScript();
-    this.getLoggedUserRoles();
+    if (this.basicAuthService.isUserLoggedIn()) {
+      this.getLoggedUserRoles();
+    }
   }
 
   public loadScript() {
@@ -37,22 +39,16 @@ export class AppComponent implements OnInit{
   }
 
   getLoggedUserRoles() {
-    if (this.basicAuthService.isUserLoggedIn()) {
       this.userService.getLoggedUser().subscribe(data => {
         this.loggedUser = data;
         this.userService.getUserRoles(this.loggedUser.id).subscribe(data => {
           this.loggedUserRoles = data;
-          console.log(data);
-          if (this.loggedUserRoles != undefined) {
             for (let tempRole of this.loggedUserRoles) {
               if (tempRole.name === 'ROLE_ADMIN') {
                 this.isAdmin = true;
               }
             }
-          }
-          console.log(this.isAdmin);
         })
       })
-    }
   }
 }

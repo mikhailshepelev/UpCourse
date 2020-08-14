@@ -37,18 +37,13 @@
 
       <div class="form-group form-inline">
 
-        <label class="mr-3 pr-3">Date:</label>
-        <input type="date" class="form-control flex-fill"
-               [(ngModel)]="lessonDate" min="{{todayDate | date:'yyyy-MM-dd'}}"
-               [ngModelOptions]="{standalone: true}">
-
         <label class="mx-3">Start time:</label>
-        <input type="time" class="form-control flex-fill" 
-               [(ngModel)]="lessonStartTime" min="{{timeNow | date:'H:mm':'UTC'}}" [ngModelOptions]="{standalone: true}">
-      
-      
+        <input type="datetime-local" class="form-control flex-fill"
+               [(ngModel)]="lessonStartTime" min="{{todayDate | date:'yyyy-MM-dd, HH:mm':'GMT+2'}}" [ngModelOptions]="{standalone: true}">
+
+
         <label class="mx-3">End time:</label>
-        <input type="time" class="form-control flex-fill" 
+        <input type="datetime-local" class="form-control flex-fill"
                [(ngModel)]="lessonEndTime" [ngModelOptions]="{standalone: true}">
 
       <button type="submit" class="btn btn-custom ml-3"(click)="addNewLesson()">Add</button>

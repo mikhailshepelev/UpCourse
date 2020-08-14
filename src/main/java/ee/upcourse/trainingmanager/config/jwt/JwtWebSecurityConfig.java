@@ -68,8 +68,6 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/get-usernames", "/get-emails").permitAll()
                 .antMatchers("/courses/**",
-                        "/topics/**",
-                        "/lessons/**",
                         "/roles/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
