@@ -1,29 +1,32 @@
-<form class="d-none d-sm-inline-block form-inline mr-auto pl-3 ml-4 md-3 my-2 my-md-0 mw-100 navbar-search">
+<div class="container my-5 p-0">
+<form class="pl-3 ml-4 my-2">
   <div class="input-group">
-    <input #myInput type="text" class="form-control border-0 small bg-dark text-light"
+    <input #myInput type="text" class="form-control-lg border-0 mr-0"
            placeholder="Search by username..." aria-label="Search" aria-describedby="basic-addon2">
     <div class="input-group-append">
-      <button id="user-search-button" (click)="getUserByUsername(myInput.value)" class="btn btn-dark">
+      <button id="user-search-button" (click)="getUserByUsername(myInput.value)" class="btn btn-custom">
         <i class="fas fa-search fa-sm"></i>
       </button>
     </div>
   </div>
   <div class="alert alert-warning" *ngIf="userNotFound">User not found</div>
 </form>
-
-<div *ngIf="user != undefined">
-  <br><br>
-  <ul>
-    <li>First name: {{user.firstName}}</li>
-    <li>Last name: {{user.lastName}}</li>
-    <li>Email: {{user.email}}</li>
-    <li>Username: {{user.username}}</li>
-    <li><label for="isTeacher">Teacher:</label>
-      <input id="isTeacher"
-             type="checkbox" class="ml-3"
-             [checked]="isTeacher"
-             (change)="changeRole()"/>
-    </li>
-  </ul>
+  <div *ngIf="user != undefined">
+  <dl class="row ml-4 mr-5 mt-5">
+    <dt class="col-sm-2">First name:</dt>
+    <dd class="col-sm-9">{{user.firstName}}</dd>
+    <dt class="col-sm-2 text-truncate">Last name:</dt>
+    <dd class="col-sm-9">{{user.lastName}}</dd>
+    <dt class="col-sm-2">Email:</dt>
+    <dd class="col-sm-9">{{user.email}}</dd>
+    <dt class="col-sm-2">Username:</dt>
+    <dd class="col-sm-9">{{user.username}}</dd>
+    <dt class="col-sm-2"><label for="isTeacher">Teacher:</label></dt>
+    <dd><input id="isTeacher"
+               type="checkbox" class="ml-3 custom-checkbox"
+               [checked]="isTeacher"
+               (change)="changeRole()"/></dd>
+  </dl>
+  </div>
 
 </div>

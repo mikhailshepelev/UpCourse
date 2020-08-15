@@ -1,0 +1,29 @@
+.btn-custom {
+  background-color: #a3de83;
+  font-weight: bolder;
+}
+
+.btn-custom:hover {
+  background-color: #239d60;
+}
+
+.btn-custom:focus {
+  border-color: #a3de83;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control-lg {
+  background-color: #f0ffe8;
+  width: 350px;
+}
+
+.form-control-lg:focus {
+  border-color: #a3de83;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+
+
+
+
