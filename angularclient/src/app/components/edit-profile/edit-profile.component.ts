@@ -14,6 +14,7 @@ export class EditProfileComponent implements OnInit {
   user: User = new User('', '', '', '', '');
   submitted = false;
   emails: string[];
+  initialUserEmail: string;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -24,6 +25,7 @@ export class EditProfileComponent implements OnInit {
       (data: User) => {
         console.log(data)
         this.user = data;
+        this.initialUserEmail = data.email;
       });
     this.userService.getAllEmails().subscribe(
       data => this.emails = data
@@ -38,14 +40,14 @@ export class EditProfileComponent implements OnInit {
 
   onSubmit() {
     for (let email of this.emails){
-      if (email === this.user.email) {
+      if (email === this.user.email && email != this.initialUserEmail) {
         alert("Error! The email address you have entered is already registered")
         return;
       }
     }
     this.submitted = true;
     console.log(this.user)
-    this.userService.putJson(this.user).subscribe(
+    this.userService.patchJson(this.user).subscribe(
       data => {
         console.log(data)
         this.userService.getUsersList();

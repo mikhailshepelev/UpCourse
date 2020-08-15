@@ -1,9 +1,9 @@
 package ee.upcourse.trainingmanager.service;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import ee.upcourse.trainingmanager.exception.EmailNotFoundException;
 import ee.upcourse.trainingmanager.model.User;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 public interface UserService {

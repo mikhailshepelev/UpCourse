@@ -58,10 +58,8 @@ export class BasicAuthenticationService {
     sessionStorage.removeItem(AUTHENTICATED_USER)
     sessionStorage.removeItem(TOKEN)
   }
-
 }
-export class AuthenticationBean {
-  constructor(public message:string) {
 
-  }
+export class AuthenticationBean {
+  constructor(public message:string) {}
 }

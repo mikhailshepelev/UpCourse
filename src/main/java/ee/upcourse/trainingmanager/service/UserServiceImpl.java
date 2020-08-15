@@ -67,9 +67,11 @@ public class UserServiceImpl implements UserService {
             }
         }
 
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        if (user.getPassword() != null) {
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            oldVersionOfUser.setPassword(encodedPassword);
+        }
 
-        oldVersionOfUser.setPassword(encodedPassword);
         oldVersionOfUser.setEmail(user.getEmail());
         oldVersionOfUser.setFirstName(user.getFirstName());
         oldVersionOfUser.setLastName(user.getLastName());

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Course} from "../../common/course";
 import {CourseService} from "../../services/course.service";
 import {ActivatedRoute} from "@angular/router";
@@ -16,7 +16,8 @@ export class CoursesListComponent implements OnInit {
   course: Course;
 
   constructor(private courseService: CourseService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -28,13 +29,11 @@ export class CoursesListComponent implements OnInit {
         $('.alert-success').slideUp(500);
       });
     });
-
   }
 
   addNewCourse() {
     this.courseService.postJson(new Course(this.courseName)).subscribe(
       data => {
-        console.log(data)
         this.listCourses();
       }
     );
@@ -43,23 +42,16 @@ export class CoursesListComponent implements OnInit {
   deleteCourse(id: number) {
     this.courseService.deleteCourse(id).subscribe(
       data => {
-        console.log(data)
         this.listCourses();
       }
     )
-    }
-
-
+  }
 
   listCourses() {
-
     this.courseService.getCoursesList().subscribe(
       data => {
         this.courses = data;
       }
     )
   }
-
-
-
 }

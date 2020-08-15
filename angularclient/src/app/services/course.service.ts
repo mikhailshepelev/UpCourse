@@ -20,14 +20,9 @@ export class CourseService {
     );
   }
 
-
   getCourseById(id: number) {
     return this.httpClient.get<Course>(this.baseUrl + "/" + id);
   }
-
-
-
-  /** POST: add a new course to the database */
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json'
