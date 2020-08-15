@@ -1,6 +1,7 @@
 package ee.upcourse.trainingmanager.controller;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+import ee.upcourse.trainingmanager.exception.EmailNotFoundException;
 import ee.upcourse.trainingmanager.model.HttpResponse;
 import ee.upcourse.trainingmanager.model.User;
 import ee.upcourse.trainingmanager.service.UserService;
