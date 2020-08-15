@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BasicAuthenticationService} from "./services/security/basic-authentication.service";
 import {UserService} from "./services/users/user.service";
-import {User} from "./common/user";
-import {Role} from "./common/role";
 import {ActivatedRoute} from "@angular/router";
 
 

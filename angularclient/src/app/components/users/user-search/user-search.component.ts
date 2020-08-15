@@ -37,6 +37,7 @@ export class UserSearchComponent implements OnInit {
       })
     }, error => {
       this.userNotFound = true;
+      throw new Error("User not found");
     })
   }
 
