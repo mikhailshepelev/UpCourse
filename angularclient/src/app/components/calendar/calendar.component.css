@@ -20,3 +20,18 @@ pre {
   border-color: #a3de83;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
+
+.cal-month-view .cal-day-badge {
+  background-color: #ff9234;
+  color: #fff; }
+.cal-month-view .cal-event {
+  background-color: #239d60;
+  border-color: #d1e8ff;
+  color: #fff; }
+
+.cal-week-view .cal-event {
+  background-color: #f0ffe8;
+  border-color: #a3de83;
+  color: #239d60; }
+
+

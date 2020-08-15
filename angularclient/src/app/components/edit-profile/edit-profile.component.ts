@@ -33,18 +33,10 @@ export class EditProfileComponent implements OnInit {
       $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
         $('.alert-success').slideUp(500);
       });
-
-    });
-
-    $('.btn-add').click(function errorAlert() {
-      $('.alert-warning').fadeTo(3000, 500).slideUp(500, function() {
-        $('.alert-warning').slideUp(500);
-      });
     });
   }
 
   onSubmit() {
-    this.submitted = false;
     for (let email of this.emails){
       if (email === this.user.email && email != this.initialUserEmail) {
         alert("Error! The email address you have entered is already registered")
