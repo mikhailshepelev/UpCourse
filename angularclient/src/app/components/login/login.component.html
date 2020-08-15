@@ -4,7 +4,11 @@
  <app-registration></app-registration>
 </div>
 
-<div class="container" *ngIf="!clickRegister">
+<div *ngIf=clickResetPassword>
+  <app-resetpassword></app-resetpassword>
+</div>
+
+<div class="container" *ngIf="!clickRegister && !clickResetPassword">
 
   <!-- Outer Row -->
   <div class="row justify-content-center" *ngIf="!basicAuthenticationService.isUserLoggedIn()">
@@ -41,7 +45,7 @@
                 </form>
                 <hr>
                 <div class="text-center">
-                  <a id="forgot-password-link" class="small" href="forgot-password.html">Forgot Password?</a>
+                  <a id="forgot-password-link" class="small" routerLink="resetpassword" (click)="clickedResetPassword()">Forgot Password?</a>
                 </div>
                 <div class="text-center">
                   <a id="create-account-link" class="small" routerLink="registration" (click)="clickedRegister()">Create an Account!</a>

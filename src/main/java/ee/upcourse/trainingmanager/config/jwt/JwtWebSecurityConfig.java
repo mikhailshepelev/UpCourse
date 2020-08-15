@@ -66,7 +66,7 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/authenticate", "/registration").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/get-usernames", "/get-emails").permitAll()
+                .antMatchers(HttpMethod.GET, "/get-usernames", "/get-emails", "/resetpassword/**").permitAll()
                 .antMatchers("/courses/**",
                         "/roles/**").hasRole("ADMIN")
                 .anyRequest()

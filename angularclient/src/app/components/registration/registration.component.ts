@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/users/user.service";
 import {User} from "../../common/user";
+import {LoginComponent} from "../login/login.component";
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,9 @@ export class RegistrationComponent implements OnInit {
   usernames: string[];
   emails: string[];
 
-  constructor(private userService: UserService) {
+
+  constructor(private userService: UserService,
+              private loginComponent: LoginComponent) {
   }
 
   ngOnInit(): void {
@@ -47,4 +50,10 @@ export class RegistrationComponent implements OnInit {
           this.userService.getUsersList();
         });
     }
+
+  goToResetpasswordPage(){
+    this.loginComponent.clickRegister = false;
+    this.loginComponent.clickResetPassword = true;
+  }
+
 }
