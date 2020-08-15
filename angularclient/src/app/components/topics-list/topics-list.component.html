@@ -30,7 +30,10 @@
            [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-custom" (click)="addNewTopic()">Add</button>
+    <button type="submit" class="btn btn-add btn-custom" (click)="addNewTopic()">Add</button>
+  </div>
+  <div id="alert-course-success" class="alert alert-success mr=5 collapse" role="alert">
+    New topic added!
   </div>
 </div>
 

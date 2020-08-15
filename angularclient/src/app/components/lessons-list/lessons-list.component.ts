@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {LessonService} from "../../services/lesson.service";
 import {Lesson} from "../../common/lesson";
 import {Timestamp} from "rxjs/internal-compatibility";
+import $ from 'node_modules/jquery/dist/jquery.min.js';
 
 @Component({
   selector: 'app-lessons-list',
@@ -36,7 +37,11 @@ export class LessonsListComponent implements OnInit {
       this.listLessons();
     });
 
-
+    $('.btn-add').click(function successAlert() {
+      $('.alert-success').fadeTo(2000, 500).slideUp(500, function () {
+        $('.alert-success').slideUp(500);
+      });
+    });
 
   }
 

@@ -10,6 +10,14 @@
   //   };
   // });
 
+$('.btn-add').click(function successAlert() {
+    $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
+    $('.alert-success').slideUp(500);
+  });
+
+});
+
+
 
   // Close any open menu accordions when window is resized below 768px
   $(window).resize(function() {

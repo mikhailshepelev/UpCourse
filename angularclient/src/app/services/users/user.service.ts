@@ -40,17 +40,15 @@ export class UserService {
   }
 
   //TODO: complete this method
-  putJson<T>(user: User): Observable<T> {
+  patchJson<T>(user: User): Observable<T> {
     console.log(user)
-    return this.httpClient.put<T>(`${this.baseUrl}/edit-user`,
+    return this.httpClient.patch<T>(`${this.baseUrl}/edit-user`,
       JSON.stringify(user),
       {headers: this.headers}
     )
   }
 
   getUserByUsername(username: string) {
-
-    // need to build URL based on the keyword
     const getUserUrl = `${this.baseUrl}/users/search/findByUsername?username=${username}`;
     return this.httpClient.get<User>(getUserUrl);
   }
@@ -66,7 +64,6 @@ export class UserService {
     const searchUrl = `${this.baseUrl}/users/${userId}/roles/3`;
     return this.httpClient.delete(searchUrl)
       .subscribe(data => {
-        console.log("role changed - Student");
       }, error => {
         console.log('error')
         });
@@ -77,11 +74,9 @@ export class UserService {
     const role = `${this.baseUrl}/roles/3`;
     return this.httpClient.patch(searchUrl,role, {headers: {'Content-Type': 'text/uri-list'}})
       .subscribe(data => {
-      console.log('role changed - Teacher');
     }, error => {console.log("error")});
   }
 
-  //TODO THIS METHOD HAS BEEN CHANGED
   getLoggedUser(){
     const url = `${this.baseUrl}/jwt/user`;
     return this.httpClient.get<User>(url);
