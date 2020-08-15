@@ -6,8 +6,6 @@
     <!-- edit form column -->
     <div class="col-md-9 personal-info">
 
-      <h3 class="pl-3 my-3">Personal info</h3>
-
       <h5 class="pl-3 my-3">Username: {{user.username}}</h5>
 
         <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()" #editProfileForm="ngForm">
@@ -47,7 +45,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Password:</label>
+            <label class="col-md-3 control-label">New password:</label>
             <div class="col-md-8">
               <input class="form-control" type="password" placeholder="******" name="password"
                      [(ngModel)]="user.password" #password="ngModel" minlength="6">
@@ -57,7 +55,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Confirm password:</label>
+            <label class="col-md-6 control-label">Confirm new password:</label>
             <div class="col-md-8">
               <input class="form-control" type="password" placeholder="******"
                      [(ngModel)]="user.confirmpassword" name="confirmpassword"
@@ -76,7 +74,8 @@
               <span></span>
               <input type="reset" class="btn btn-dark" value="Reset">
 
-              <div *ngIf="submitted" id="alert-course-success" class="alert alert-success mr=5 my-3 collapse" role="alert">
+              <div id="alert-course-success"
+                   class="alert alert-success mr=5 my-3 collapse" role="alert">
                 Profile information updated!
               </div>
             </div>
