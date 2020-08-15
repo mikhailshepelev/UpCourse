@@ -26,7 +26,6 @@ export class UserSearchComponent implements OnInit {
     this.isTeacher = false;
     this.userService.getUserByUsername(username).subscribe(data => {
       this.user = data;
-      console.log(data);
       this.userService.getUserRoles(this.user.id).subscribe(data => {
         this.roles = data;
         for (let tempRole of this.roles) {
@@ -51,6 +50,4 @@ export class UserSearchComponent implements OnInit {
       this.isTeacher = true;
     }
   }
-
-
 }

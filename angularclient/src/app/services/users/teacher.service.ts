@@ -38,13 +38,11 @@ export class TeacherService {
   }
 
   deleteTeacherFromTopic(theTopicId: number, theTeacherId: number) {
-
     const url = `${this.baseUrl}/topics/${theTopicId}/teacher/${theTeacherId}`;
     return this.httpClient.delete(url);
 
   }
 }
-
 
 interface GetResponseUsers {
   _embedded: {

@@ -13,7 +13,6 @@ export class Topic {
     this.course = course;
   }
 
-
   set teacher(value: string) {
     this._teacher = value;
   }

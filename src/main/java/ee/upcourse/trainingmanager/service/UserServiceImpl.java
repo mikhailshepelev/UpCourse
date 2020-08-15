@@ -59,7 +59,8 @@ public class UserServiceImpl implements UserService {
         User oldVersionOfUser = userRepository.findByUsername(user.getUsername());
 
         User userWithSameEmail = userRepository.findByEmail(user.getEmail());
-        if (userWithSameEmail != null) {
+
+        if (userWithSameEmail != null && !user.getEmail().equals(oldVersionOfUser.getEmail())) {
             try {
                 throw new Exception("User with same email already registered");
             } catch (Exception exception) {
