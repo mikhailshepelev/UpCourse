@@ -31,7 +31,6 @@ export class UserService {
   });
 
   postJson<T>(user: User): Observable<T> {
-    console.log(user)
     return this.httpClient.post<T>(
       this.getRegistrationUrl(),
       JSON.stringify(user),
@@ -41,7 +40,6 @@ export class UserService {
 
   //TODO: complete this method
   patchJson<T>(user: User): Observable<T> {
-    console.log(user)
     return this.httpClient.patch<T>(`${this.baseUrl}/edit-user`,
       JSON.stringify(user),
       {headers: this.headers}
@@ -65,7 +63,6 @@ export class UserService {
     return this.httpClient.delete(searchUrl)
       .subscribe(data => {
       }, error => {
-        console.log('error')
         });
   }
 

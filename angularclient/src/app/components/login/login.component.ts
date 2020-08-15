@@ -34,12 +34,10 @@ export class LoginComponent implements OnInit {
       this.basicAuthenticationService.executeBasicAuthenticationService(this.username, this.password)
         .subscribe(
           data => {
-            console.log(data)
             this.router.navigate(['courses', this.username])
             this.invalidLogin = false;
           },
           error => {
-            console.log(error)
             this.invalidLogin = true;
           }
         )
@@ -62,7 +60,6 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = false;
         },
         error => {
-          console.log(error)
           this.invalidLogin = true;
         }
       )
