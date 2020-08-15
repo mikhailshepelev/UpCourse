@@ -4,6 +4,7 @@ import {TopicService} from "../../services/topic.service";
 import {ActivatedRoute} from "@angular/router";
 import {CourseService} from "../../services/course.service";
 import {Course} from "../../common/course";
+import $ from 'node_modules/jquery/dist/jquery.min.js';
 
 @Component({
   selector: 'app-topics-list',
@@ -27,8 +28,20 @@ export class TopicsListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listTopics();
     });
-
     this.getCurrentCourse();
+
+    $('.btn-add').click(function successAlert() {
+      $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
+        $('.alert-success').slideUp(500);
+      });
+
+    });
+
+    $('.btn-add').click(function errorAlert() {
+      $('.alert-warning').fadeTo(3000, 500).slideUp(500, function() {
+        $('.alert-warning').slideUp(500);
+      });
+    });
   }
 
 
