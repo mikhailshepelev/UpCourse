@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @Data
 @NoArgsConstructor
 @Entity
@@ -21,18 +20,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "active")
+    private boolean active;
+
+    @Column(name = "email")
     private String email;
 
     @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
-
-    private boolean active;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

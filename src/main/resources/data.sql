@@ -1,4 +1,4 @@
-INSERT INTO user
+INSERT INTO user (id, active, email, first_name, last_name, password, username)
 VALUES
 (1,  true,'alex@icloud.com', 'Alex', 'Johnson', '$2y$12$8uAjEFoHS2PKNOPihJlXN.FEdfewDnv.cDyXAgpSBuHCGhfwXBPOm', 'alexj'),
 (2,  true,'john@gmail.com', 'John', 'Smith', '$2y$12$KXlqaRzRJg5CPlS.8YGC5uXxCGXqCjv3Jc21mGsv9.vQZ.I6On3FG', 'johns'),
@@ -36,13 +36,13 @@ VALUES
 (34, true,'thanos@yahoo.com','Thanos','Alpha','$2y$12$Rvt5HuX2RxS.mkKzFKwhwedQInxOFoUG3oiYkVuImT8rBBBmKj8my','thanos1212'),
 (35, true,'avenger@gmail.com','Avia','Marika','$2y$12$KJ.8Jt7csuuiT8z0bkazNOiNCXOg0JnDbPdywOwaBD.yMz5J8DmFy','avia1256');
 
-INSERT INTO role
+INSERT INTO role (id, name)
 VALUES
 (1, 'ROLE_ADMIN'),
 (2, 'ROLE_STUDENT'),
 (3, 'ROLE_TEACHER');
 
-INSERT INTO course
+INSERT INTO course (id, name)
 VALUES
 (2, 'Java for Beginners 1'),
 (3, 'Python 2'),
@@ -75,7 +75,7 @@ VALUES
 (34, 'Java Advanced 3'),
 (35, 'Java Advanced 4');
 
-INSERT INTO user_roles
+INSERT INTO user_roles (user_id, role_id)
 VALUES
 (1, 1),
 (2, 2),
@@ -113,7 +113,7 @@ VALUES
 (34,2),
 (35,2);
 
-INSERT INTO course_user
+INSERT INTO course_user (user_id, course_id)
 VALUES
 (1,2),
 (1,3),
@@ -146,61 +146,61 @@ VALUES
 (5,34),
 (5,35);
 
-INSERT INTO topic
+INSERT INTO topic (id, name, course_id, teacher_id)
 VALUES
 (1, 'Java Fundamentals', 2, 10),
-(2, 'Python Fundamentals', 2, 10),
+(2, 'Python Fundamentals', 3, 10),
 (3, 'JUnit', 2, 10),
-(4, 'Python Fundamentals', 2, 10),
+(4, 'Python Fundamentals', 3, 10),
 (5, 'Spring Framework', 2, 10),
 (6, 'Java Advanced',2, 24),
-(7, 'Python Fundamentals',2,32),
-(8, 'Python Basics',7,32),
-(9, 'Python Basics',8,32),
-(10, 'Python Basics',9,32),
-(11, 'Java Basics',10,21),
-(12, 'Java Fundamentals',12,21),
-(14, 'Java Fundamentals',13,21),
-(15, 'Java Fundamentals',14,21),
-(16, 'Java Fundamentals',15,21),
-(17, 'JUnit',18,21),
-(18, 'Mockito',19,21),
-(19, 'Mockito',20,21),
-(20, 'Mockito',20,21),
-(21, 'Introduction to JavaScript',21,24),
-(22, 'Introduction to JavaScript',22,24),
-(23, 'Introduction to JavaScript',23,24),
-(24, 'Introduction to JavaScript',24,24),
-(25, 'Java Advance Fundamentals',26,21),
-(26, 'Java Advance Fundamentals',27,21),
-(27, 'Java Advance Fundamentals',28,21),
-(28, 'Java Advance Fundamentals',29,21),
-(29, 'Java Advance Fundamentals',30,21),
-(30, 'Java Advanced',33,24),
-(31, 'Java Advanced',34,24),
-(32, 'Java Advanced',35,24);
+(7, 'Python Fundamentals',3,32),
+(8, 'Python Basics',3,32),
+(9, 'Python Basics',3,32),
+(10, 'Python Basics',3,32),
+(11, 'Java Basics',2,21),
+(12, 'Java Fundamentals',2,21),
+(14, 'Java Fundamentals',2,21),
+(15, 'Java Fundamentals',2,21),
+(16, 'Java Fundamentals',2,21),
+(17, 'JUnit',2,21),
+(18, 'Mockito',2,21),
+(19, 'Mockito',2,21),
+(20, 'Mockito',2,21),
+(21, 'Introduction to JavaScript',2,24),
+(22, 'Introduction to JavaScript',2,24),
+(23, 'Introduction to JavaScript',2,24),
+(24, 'Introduction to JavaScript',2,24),
+(25, 'Java Advance Fundamentals',2,21),
+(26, 'Java Advance Fundamentals',2,21),
+(27, 'Java Advance Fundamentals',2,21),
+(28, 'Java Advance Fundamentals',2,21),
+(29, 'Java Advance Fundamentals',2,21),
+(30, 'Java Advanced',2,24),
+(31, 'Java Advanced',2,24),
+(32, 'Java Advanced',2,24);
 
 
 
-INSERT INTO lesson
+INSERT INTO lesson (id, end_time, start_time, subject, topic_id)
 VALUES
 (1, '2020-08-01 12:30:00', '2020-08-01 10:30:00', 'Introduction to Java', 1),
-(2, '2020-08-01 15:00:00', '2020-08-01 10:00:00', 'Hello world project', 1),
-(3, '2020-08-02 15:00:00', '2020-08-02 10:00:00', 'Database integration Python', 2),
-(4, '2020-08-02 15:00:00', '2020-08-02 10:00:00', 'Using Os & Sys', 2),
-(5, '2020-08-03 15:00:00', '2020-08-03 10:00:00', 'Environment Setup', 4),
-(6, '2020-08-03 15:00:00', '2020-08-03 10:00:00', 'Using Assertion', 4),
-(7, '2020-08-04 15:00:00', '2020-08-04 10:00:00', 'Spring Core', 5),
-(8, '2020-08-04 15:00:00', '2020-08-04 10:00:00', 'Spring Annotation', 5),
-(9, '2020-08-05 15:00:00', '2020-08-05 10:00:00', 'Slicing', 6),
-(10, '2020-08-05 15:00:00','2020-08-05 10:00:00', 'Dictionaries & Set', 6),
-(11, '2020-08-06 15:00:00', '2020-08-06 10:00:00', 'Slicing', 7),
-(12, '2020-08-06 15:00:00','2020-08-06 10:00:00', 'Dictionaries & Set', 7),
-(13, '2020-08-07 15:00:00', '2020-08-07 10:00:00', 'Database integration Python', 4),
-(14, '2020-08-07 15:00:00', '2020-08-07 10:00:00', 'Using Os & Sys', 4),
-(15, '2020-08-08 15:00:00', '2020-08-08 10:00:00', 'Using the Python Shell', 4),
-(16, '2020-08-08 15:00:00', '2020-08-08 10:00:00', 'Copying Structures', 4),
-(17, '2020-08-11 15:00:00', '2020-08-11 10:00:00', 'Using the Python Shell', 3),
-(18, '2020-08-11 15:00:00', '2020-08-11 10:00:00', 'Copying Structures', 3),
-(19, '2020-08-14 15:00:00', '2020-08-14 10:00:00', 'Encapsulation', 3),
-(20, '2020-08-14 15:00:00', '2020-08-14 10:00:00', 'Composition', 3);
+(2, '2020-08-04 15:00:00', '2020-08-04 10:00:00', 'Hello world project', 1),
+(3, '2020-08-07 15:00:00', '2020-08-07 10:00:00', 'Database integration Python', 2),
+(4, '2020-08-12 15:00:00', '2020-08-12 10:00:00', 'Using Os & Sys', 2),
+(5, '2020-08-15 15:00:00', '2020-08-15 10:00:00', 'Environment Setup', 3),
+(6, '2020-08-19 15:00:00', '2020-08-19 10:00:00', 'Using Assertion', 3),
+(7, '2020-08-23 15:00:00', '2020-08-23 10:00:00', 'Spring Core', 5),
+(8, '2020-08-28 15:00:00', '2020-08-28 10:00:00', 'Spring Annotation', 5),
+(9, '2020-09-02 15:00:00', '2020-09-02 10:00:00', 'Slicing', 5),
+(10, '2020-09-05 15:00:00','2020-09-05 10:00:00', 'Dictionaries & Set', 6),
+(11, '2020-09-09 15:00:00', '2020-09-09 10:00:00', 'Slicing', 6),
+(12, '2020-09-13 15:00:00','2020-09-13 10:00:00', 'Dictionaries & Set', 11),
+(13, '2020-09-18 15:00:00', '2020-09-18 10:00:00', 'Database integration Python', 4),
+(14, '2020-09-23 15:00:00', '2020-09-23 10:00:00', 'Using Os & Sys', 11),
+(15, '2020-09-27 15:00:00', '2020-09-27 10:00:00', 'Using the Python Shell', 4),
+(16, '2020-10-01 15:00:00', '2020-10-01 10:00:00', 'Copying Structures', 11),
+(17, '2020-10-05 15:00:00', '2020-10-05 10:00:00', 'Using the Python Shell', 3),
+(18, '2020-10-09 15:00:00', '2020-10-09 10:00:00', 'Copying Structures', 11),
+(19, '2020-10-13 15:00:00', '2020-10-13 10:00:00', 'Encapsulation', 12),
+(20, '2020-10-18 15:00:00', '2020-10-18 10:00:00', 'Composition', 12);
