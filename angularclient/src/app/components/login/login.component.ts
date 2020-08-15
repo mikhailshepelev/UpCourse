@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.navigateByUrl(`/login`);
-
   }
 
   handleBasicAuthLogin() {
@@ -61,6 +60,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.invalidLogin = true;
+          this.router.navigateByUrl(`/login`);
         }
       )
   }
