@@ -1,11 +1,9 @@
 package ee.upcourse.trainingmanager.basicauth;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.ToString;
 
-@Getter
-@Setter
+@Data
 @ToString
 public class AuthenticationBean {
 

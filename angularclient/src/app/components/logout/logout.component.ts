@@ -13,5 +13,4 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
     this.basicAuthenticationService.logout();
   }
-
 }
