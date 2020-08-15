@@ -26,16 +26,19 @@
 <div id="add-topic" class="mr-5 my-4">
   <h4 class="my-4 font-weight-bold">Add new topic</h4>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Topic name"
+    <input type="text" class="form-control mb-3" placeholder="Topic name"
            [(ngModel)]="topicName" [ngModelOptions]="{standalone: true}">
-    <div class="alert alert-warning" *ngIf="blankName">Add topic name</div>
+    <div class="alert alert-warning" *ngIf="blankName, else elseBlock">Please add topic name</div>
+    <ng-template #elseBlock>
+      <div id="alert-course-success" class="alert alert-success mr=5 collapse" role="alert">
+      New topic added!
+    </div>
+    </ng-template>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-add btn-custom" (click)="addNewTopic()">Add</button>
   </div>
-  <div id="alert-course-success" class="alert alert-success mr=5 collapse" role="alert">
-    New topic added!
-  </div>
+
 </div>
 
 <hr class="mr-5">

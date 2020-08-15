@@ -75,12 +75,13 @@
               </button>
               <span></span>
               <input type="reset" class="btn btn-dark" value="Reset">
+
+              <div *ngIf="submitted" id="alert-course-success" class="alert alert-success mr=5 my-3 collapse" role="alert">
+                Profile information updated!
+              </div>
             </div>
           </div>
         </form>
-        <div id="alert-course-success" class="alert alert-success mr=5 collapse" role="alert">
-          Profile information updated!
-        </div>
       </div>
     </div>
   </div>

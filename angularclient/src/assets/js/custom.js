@@ -17,6 +17,12 @@ $('.btn-add').click(function successAlert() {
 
 });
 
+  $('.btn-add').click(function errorAlert() {
+    $('.alert-warning').fadeTo(3000, 500).slideUp(500, function() {
+      $('.alert-warning').slideUp(500);
+    });
+  });
+
 
 
   // Close any open menu accordions when window is resized below 768px

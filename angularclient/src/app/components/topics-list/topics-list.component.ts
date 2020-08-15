@@ -4,8 +4,6 @@ import {TopicService} from "../../services/topic.service";
 import {ActivatedRoute} from "@angular/router";
 import {CourseService} from "../../services/course.service";
 import {Course} from "../../common/course";
-import $ from 'node_modules/jquery/dist/jquery.min.js';
-
 
 @Component({
   selector: 'app-topics-list',
@@ -31,17 +29,11 @@ export class TopicsListComponent implements OnInit {
     });
 
     this.getCurrentCourse();
-
-    $('.btn-add').click(function successAlert() {
-      $('.alert-success').fadeTo(2000, 500).slideUp(500, function () {
-        $('.alert-success').slideUp(500);
-      });
-    });
-
   }
 
 
   addNewTopic() {
+    this.blankName = false;
     if (this.topicName != '' && this.topicName != undefined) {
       this.topicService.postJson(new Topic(this.topicName,
         this.topicService.getBaseUrl() + '/' + this.currentCourseId)).subscribe(
