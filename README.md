@@ -1,10 +1,22 @@
 # Welcome to UpCourse project!
 
-## Introduction
-UpCourse is a training management system application where users can manage educational courses based on their user role. 
-Students can enroll in courses and see their schedules. 
-Teachers can add lessons, topics and add study materials to courses and see their teaching schedule. 
-Admins can create and change courses, register students and teachers.
+## About
+UpCourse app is the final project for Software Development Academy's Java course.
+
+The idea is simple - it's a training management system application where users can manage educational courses based on their user role. 
+
+There are 3 roles: ADMIN, TEACHER, STUDENT.
+Students and teachers have a convenient way to check their schedules. 
+Admins can create and change courses, register students and teachers to the courses.
+
+Other features include:
+ - logging in with JWT authentication
+ - registering as a new user with the default role as student,
+ - admin can search users by username
+ - and change student-teacher roles,
+ - editing profile information,
+ - reseting password
+
 Upcourse is running on Spring Boot, Angular and MySQL.
 
 ### Running UpCourse app locally
@@ -39,5 +51,30 @@ Run the following commands in /trainingmanager/angularclient folder:
 Run the project in intelliJ.
 Then you can access the application at http://localhost:4200/
 
-### Work in progress
-At the moment you can only access the application as an admin user, see and modify courses, their topics and lessons.
+**Log in or register as a new user**
+Log in with following credentials:
+
+as ADMIN
+ - username: alexj, password: 1234 
+as TEACHER 
+ - username: linam, password: 8776
+as STUDENT
+ - username: johns, password: 3453
+
+OR register and log in as a new student
+
+## Authors
+
+ - [Eeva-Liisa](https://github.com/Eevaliisa)
+ - [Ilya](https://github.com/ilyagarkusha)
+ - [Mikhail](https://github.com/mikhailshepelev)
+ - [Shamshur](https://github.com/Shamshur)
+
+##  Acknowledgments
+
+Big thanks to our ever so patient instructor Hatef Palizgar
+and Software Development Academy
+
+## Project status
+
+Work in progress :)
