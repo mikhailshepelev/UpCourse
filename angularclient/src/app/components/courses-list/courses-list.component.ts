@@ -24,6 +24,18 @@ export class CoursesListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listCourses();
     });
+    $('.btn-add').click(function successAlert() {
+      $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
+        $('.alert-success').slideUp(500);
+      });
+
+    });
+
+    $('.btn-add').click(function errorAlert() {
+      $('.alert-warning').fadeTo(3000, 500).slideUp(500, function() {
+        $('.alert-warning').slideUp(500);
+      });
+    });
   }
 
   addNewCourse() {
