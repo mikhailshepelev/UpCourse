@@ -33,7 +33,6 @@ export class StudentsListComponent implements OnInit {
     this.studentService.getAddStudentsList(this.courseId).subscribe(
       data => {
         this.students = data;
-        console.log(data);
       }
     )
   }
@@ -61,5 +60,4 @@ export class StudentsListComponent implements OnInit {
       }
     );
   }
-
 }

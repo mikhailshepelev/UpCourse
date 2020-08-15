@@ -64,5 +64,4 @@ export class TeachersListComponent implements OnInit {
       }
     );
   }
-
 }

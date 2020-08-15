@@ -19,7 +19,6 @@ export class TopicService {
   }
 
   getTopicsList(theCourseId: number): Observable<Topic[]> {
-    // need to build URL based on category id
     const searchUrl = `${this.baseUrl}/search/findByCourseId?id=${theCourseId}`;
     return this.httpClient.get<GetResponseTopics>(searchUrl).pipe(
       map(response => response._embedded.topics)
@@ -42,12 +41,10 @@ export class TopicService {
     )
   }
 
-
   deleteTopic(topicId: number) {
     const url = `http://localhost:8080/topics/${topicId}`;
     return this.httpClient.delete(url, {headers: this.headers})
   }
-
 }
 
 interface GetResponseTopics {

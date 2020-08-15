@@ -19,7 +19,6 @@ export class LessonService {
   }
 
   getLessonsList(theLessonId: number): Observable<Lesson[]> {
-    // need to build URL based on topic id
     const searchUrl = `${this.baseUrl}/search/findByTopicId?id=${theLessonId}`;
     return this.httpClient.get<GetResponseLessons>(searchUrl).pipe(
       map(response => response._embedded.lessons)
@@ -47,8 +46,6 @@ export class LessonService {
 
 
   searchLessons(theKeyword: string): Observable<Lesson[]> {
-
-    // need to build URL based on the keyword
     const searchUrl = `${this.baseUrl}/search/findBySubjectContaining?subject=${theKeyword}`;
     return this.httpClient.get<GetResponseLessons>(searchUrl).pipe(
       map(response => response._embedded.lessons)
@@ -59,7 +56,6 @@ export class LessonService {
     const searchUrl = `http://localhost:8080/schedule/${username}`;
     return this.httpClient.get<Lesson[]>(searchUrl);
   }
-
 }
 
 interface GetResponseLessons {

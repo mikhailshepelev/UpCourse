@@ -34,20 +34,15 @@ export class StudentService {
   });
 
   addStudentToCourse(theCourseId: number, theStudentId: number) {
-
     const url = `${this.baseUrl}/courses/${theCourseId}/users`;
     const student = `${this.baseUrl}/users/${theStudentId}`;
     return this.httpClient.patch(url,student, {headers: this.headers});
-
   }
 
   deleteStudentFromCourse(theCourseId: number, theStudentId: number) {
-
     const url = `${this.baseUrl}/courses/${theCourseId}/users/${theStudentId}`;
     return this.httpClient.delete(url);
-
   }
-
 }
 
 interface GetResponseUsers {
