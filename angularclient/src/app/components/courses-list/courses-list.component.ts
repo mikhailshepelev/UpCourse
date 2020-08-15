@@ -14,6 +14,7 @@ export class CoursesListComponent implements OnInit {
   courseName;
   courses: Course[];
   course: Course;
+  blankName = false;
 
   constructor(private courseService: CourseService,
               private route: ActivatedRoute) {
@@ -32,11 +33,16 @@ export class CoursesListComponent implements OnInit {
   }
 
   addNewCourse() {
-    this.courseService.postJson(new Course(this.courseName)).subscribe(
-      data => {
-        this.listCourses();
-      }
-    );
+    if (this.courseName != '' && this.courseName != undefined) {
+      this.courseService.postJson(new Course(this.courseName)).subscribe(
+        data => {
+          this.listCourses();
+          this.blankName = false;
+        }
+      );
+    } else {
+      this.blankName = true;
+    }
   }
 
   deleteCourse(id: number) {
