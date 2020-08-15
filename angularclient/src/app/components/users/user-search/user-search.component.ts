@@ -26,6 +26,7 @@ export class UserSearchComponent implements OnInit {
     this.isTeacher = false;
     this.userService.getUserByUsername(username).subscribe(data => {
       this.user = data;
+      this.userNotFound = false;
       console.log(data);
       this.userService.getUserRoles(this.user.id).subscribe(data => {
         this.roles = data;
