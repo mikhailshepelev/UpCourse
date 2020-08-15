@@ -1,5 +1,6 @@
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
 <div class="row text-center">
-  <div class="col-md-4">
+  <div class="col-md-4 mt-4">
     <div class="btn-group">
       <div
         class="btn btn-custom"
@@ -28,10 +29,10 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 mt-4">
     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 mt-4">
     <div class="btn-group">
       <div
         class="btn btn-custom"
@@ -89,4 +90,5 @@
     [dayEndHour]="21"
   >
   </mwl-calendar-day-view>
+</div>
 </div>
