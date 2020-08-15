@@ -1,6 +1,6 @@
 package ee.upcourse.trainingmanager.controller;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+import ee.upcourse.trainingmanager.exception.EmailNotFoundException;
 import ee.upcourse.trainingmanager.model.HttpResponse;
 import ee.upcourse.trainingmanager.model.User;
 import ee.upcourse.trainingmanager.service.UserService;
@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -30,7 +31,7 @@ public class UserController {
         userService.saveRegisteredUser(user);
     }
 
-    @PutMapping("/edit-user")
+    @PatchMapping("/edit-user")
     public void editUserData(@RequestBody User user){
         userService.editUserProperties(user);
     }

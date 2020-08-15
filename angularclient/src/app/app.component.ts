@@ -12,10 +12,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title: Function;
   isAdmin = false;
-  loggedUser: User;
-  loggedUserRoles: Role[];
 
   constructor(public basicAuthService : BasicAuthenticationService,
               public userService: UserService,
@@ -40,15 +37,10 @@ export class AppComponent implements OnInit{
 
   getLoggedUserRoles() {
       this.userService.getLoggedUser().subscribe(data => {
-        this.loggedUser = data;
-        this.userService.getUserRoles(this.loggedUser.id).subscribe(data => {
-          this.loggedUserRoles = data;
-            for (let tempRole of this.loggedUserRoles) {
-              if (tempRole.name === 'ROLE_ADMIN') {
-                this.isAdmin = true;
-              }
-            }
-        })
+        for (let tempRole of data.authorities) {
+          if (tempRole.authority === 'ROLE_ADMIN') {
+            this.isAdmin = true;
+          }}
       })
   }
 }

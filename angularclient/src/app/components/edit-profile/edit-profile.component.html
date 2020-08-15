@@ -2,17 +2,6 @@
   <h3 class="my-3 pl-3 font-weight-bold">Edit profile</h3>
   <hr>
   <div class="row">
-<!--    &lt;!&ndash; left column &ndash;&gt;-->
-<!--    <div class="col-md-3" *ngIf="this.user.imageUrl==''">-->
-<!--      <div class="text-center">-->
-<!--        <img src="assets/images/editavatar.png" id="default-avatar" class="img-profile img-circle my-3" alt="avatar">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-3" *ngIf="this.user.imageUrl!=''">-->
-<!--      <div class="text-center">-->
-<!--        <img src="{{this.user.imageUrl}}" id="actual-avatar" class="img-profile img-circle my-3" alt="avatar">-->
-<!--      </div>-->
-<!--    </div>-->
 
     <!-- edit form column -->
     <div class="col-md-9 personal-info">
@@ -62,9 +51,8 @@
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
               <input class="form-control" type="password" placeholder="******" name="password"
-                     [(ngModel)]="user.password" required #password="ngModel" minlength="6">
+                     [(ngModel)]="user.password" #password="ngModel" minlength="6">
               <div *ngIf="password.invalid && password.touched" class="alert alert-danger mt-2">
-                <div *ngIf="password.errors.required"> Password is required.</div>
                 <div *ngIf="password.errors.minlength"> Password should contain minimum 6 symbols</div>
               </div>
             </div>
@@ -74,9 +62,8 @@
             <div class="col-md-8">
               <input class="form-control" type="password" placeholder="******"
                      [(ngModel)]="user.confirmpassword" name="confirmpassword"
-                     required #confirmpassword="ngModel" pattern="{{ password.value }}">
+                      #confirmpassword="ngModel" pattern="{{ password.value }}">
               <div *ngIf=" confirmpassword.invalid && confirmpassword.touched" class="alert alert-danger mt-2">
-                <div *ngIf="confirmpassword.errors.required"> Confirm password is required.</div>
                 <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
               </div>
             </div>
