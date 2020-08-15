@@ -11,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   isAdmin = false;
+  logoLink;
 
   constructor(public basicAuthService : BasicAuthenticationService,
               public userService: UserService,
@@ -39,6 +40,15 @@ export class AppComponent implements OnInit{
           if (tempRole.authority === 'ROLE_ADMIN') {
             this.isAdmin = true;
           }}
+        this.setLogoLink();
       })
+  }
+
+  setLogoLink() {
+    if (this.isAdmin) {
+      this.logoLink = '/courses'
+    } else {
+      this.logoLink = '/calendar'
+    }
   }
 }

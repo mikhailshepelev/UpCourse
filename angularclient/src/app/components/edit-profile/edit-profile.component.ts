@@ -23,7 +23,6 @@ export class EditProfileComponent implements OnInit {
   ngOnInit():void{
     this.userService.getLoggedUser().subscribe(
       (data: User) => {
-        console.log(data)
         this.user = data;
         this.initialUserEmail = data.email;
       });
@@ -46,12 +45,9 @@ export class EditProfileComponent implements OnInit {
       }
     }
     this.submitted = true;
-    console.log(this.user)
     this.userService.patchJson(this.user).subscribe(
       data => {
-        console.log(data)
         this.userService.getUsersList();
       });
-    //TODO: complete routing
   }
 }

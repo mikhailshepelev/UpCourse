@@ -46,7 +46,6 @@ export class TopicsListComponent implements OnInit {
       this.topicService.postJson(new Topic(this.topicName,
         this.topicService.getBaseUrl() + '/' + this.currentCourseId)).subscribe(
         data => {
-          console.log(data)
           this.listTopics();
           this.blankName = false;
         });
@@ -60,7 +59,6 @@ export class TopicsListComponent implements OnInit {
   deleteTopic(id: number) {
     this.topicService.deleteTopic(id).subscribe(
       data => {
-        console.log(data)
         this.listTopics();
       }
     )
@@ -69,7 +67,6 @@ export class TopicsListComponent implements OnInit {
   getCurrentCourse() {
 
     this.courseService.getCourseById(this.currentCourseId).subscribe((data: Course) => {
-      console.log(data);
       this.currentCourse = data;
     });
   }
@@ -99,7 +96,6 @@ export class TopicsListComponent implements OnInit {
   editCourse() {
     this.courseService.postJson(this.currentCourse).subscribe(
       data => {
-        console.log(data)
       });
     this.isClicked = false;
 

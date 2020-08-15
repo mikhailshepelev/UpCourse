@@ -7,10 +7,11 @@
 <div id="wrapper" *ngIf="basicAuthService.isUserLoggedIn()">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" [hidden]="!isAdmin">
+  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+
 
     <!-- Sidebar - Brand -->
-    <a class=" sidebar-brand d-flex align-items-center justify-content-center" href="/courses">
+    <a class=" sidebar-brand d-flex align-items-center justify-content-center" href="{{logoLink}}" >
       <div class="sidebar-brand-icon">
         <img id="logo" src="assets\images\logo.png" alt="Apple on a book">
       </div>
@@ -19,7 +20,7 @@
 
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item" [hidden]="!isAdmin">
       <a class="nav-link" routerLink="/courses" routerLinkActive="active-link">
         <i class="fa fa-list-ul"></i>
         <span>Courses</span></a>
@@ -50,15 +51,14 @@
 
 
         <!-- Topbar Search -->
-
-        <app-search></app-search>
+        <app-search [hidden]="!isAdmin"></app-search>
 
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 
           <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-          <li class="nav-item dropdown no-arrow d-sm-none" [hidden]="!isAdmin">
+          <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-search fa-fw"></i>
             </a>

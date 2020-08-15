@@ -54,9 +54,6 @@ export class LessonsListComponent implements OnInit {
         this.lessonService.getBaseUrl() + '/' + this.currentTopicId,
         this.lessonDate, this.lessonStartTime, this.lessonEndTime)).subscribe(
         data => {
-          console.log(data)
-          console.log(this.lessonStartTime);
-          console.log(this.lessonEndTime);
           this.listLessons();
           this.blankName = false;
         });
@@ -70,7 +67,6 @@ export class LessonsListComponent implements OnInit {
   deleteLesson(id: number) {
     this.lessonService.deleteLesson(id).subscribe(
       data => {
-        console.log(data)
         this.listLessons();
       }
     )
@@ -79,7 +75,6 @@ export class LessonsListComponent implements OnInit {
   getCurrentTopic() {
 
     this.topicService.getTopicById(this.currentTopicId).subscribe((data: Topic) => {
-      console.log(data);
       this.currentTopic = data;
     });
   }
@@ -117,7 +112,6 @@ export class LessonsListComponent implements OnInit {
   editTopic() {
     this.topicService.postJson(this.currentTopic).subscribe(
       data => {
-        console.log(data)
       });
     this.isClicked = false;
 
