@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../services/users/user.service";
-import {ActivatedRoute} from "@angular/router";
 import {User} from "../../../common/user";
 import {Role} from "../../../common/role";
+
 
 @Component({
   selector: 'app-user-search',
@@ -15,9 +15,9 @@ export class UserSearchComponent implements OnInit {
   roles: Role[];
   username;
   isTeacher;
+  userNotFound = false;
 
-  constructor(private userService: UserService,
-              private route: ActivatedRoute) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
   }
@@ -36,7 +36,8 @@ export class UserSearchComponent implements OnInit {
         }
       })
     }, error => {
-      console.log("user not found");
+      this.userNotFound = true;
+      throw new Error("User not found");
     })
   }
 

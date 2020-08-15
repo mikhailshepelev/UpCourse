@@ -6,6 +6,7 @@
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Course name"
              [(ngModel)]="courseName" [ngModelOptions]="{standalone: true}">
+      <div class="alert alert-warning" *ngIf="blankName">Add course name</div>
     </div>
     <div class="form-group">
       <button id="btn-add-course" type="submit" class="btn btn-add" (click)="addNewCourse()">Add</button>

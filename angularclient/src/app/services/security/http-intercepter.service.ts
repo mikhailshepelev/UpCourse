@@ -42,7 +42,7 @@ export class HttpIntercepterService implements HttpInterceptor{
           case 403:
             this.router.navigate(['error-403']);
             break;
-          default: this.router.navigate(['error']);
+          //default: this.router.navigate(['error']);
         }
         return throwError(error.message);
       })

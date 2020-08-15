@@ -19,6 +19,7 @@ export class TopicsListComponent implements OnInit {
   topics: Topic[];
   topicName;
   isClicked = false;
+  blankName = false;
 
   constructor(private topicService: TopicService,
               private courseService: CourseService,
@@ -41,12 +42,17 @@ export class TopicsListComponent implements OnInit {
 
 
   addNewTopic() {
-    this.topicService.postJson(new Topic(this.topicName,
-      this.topicService.getBaseUrl()+ '/' + this.currentCourseId)).subscribe(
-      data => {
-        console.log(data)
-        this.listTopics();
-      });
+    if (this.topicName != '' && this.topicName != undefined) {
+      this.topicService.postJson(new Topic(this.topicName,
+        this.topicService.getBaseUrl() + '/' + this.currentCourseId)).subscribe(
+        data => {
+          console.log(data)
+          this.listTopics();
+          this.blankName = false;
+        });
+    } else {
+      this.blankName = true;
+    }
 
 
   }

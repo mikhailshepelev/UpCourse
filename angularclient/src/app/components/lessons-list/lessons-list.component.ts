@@ -4,7 +4,6 @@ import {TopicService} from "../../services/topic.service";
 import {ActivatedRoute} from "@angular/router";
 import {LessonService} from "../../services/lesson.service";
 import {Lesson} from "../../common/lesson";
-import {Timestamp} from "rxjs/internal-compatibility";
 import $ from 'node_modules/jquery/dist/jquery.min.js';
 
 @Component({
@@ -23,9 +22,8 @@ export class LessonsListComponent implements OnInit {
   lessonEndTime;
   isClicked = false;
   todayDate = new Date();
-  timeNow = new Date().getTime();
   searchMode: boolean;
-
+  blankName = false;
 
 
   constructor(private topicService: TopicService,
@@ -47,15 +45,24 @@ export class LessonsListComponent implements OnInit {
 
 
   addNewLesson() {
-    this.lessonService.postJson(new Lesson(this.lessonSubject,
-      this.lessonService.getBaseUrl()+ '/' + this.currentTopicId,
-            this.lessonDate, this.lessonStartTime, this.lessonEndTime)).subscribe(
-      data => {
-        console.log(data)
-        console.log(this.lessonStartTime);
-        console.log(this.lessonEndTime);
-        this.listLessons();
-      });
+    if (this.lessonSubject != undefined
+      && this.lessonSubject != ''
+      && this.lessonStartTime != undefined
+      && this.lessonEndTime != undefined
+    ) {
+      this.lessonService.postJson(new Lesson(this.lessonSubject,
+        this.lessonService.getBaseUrl() + '/' + this.currentTopicId,
+        this.lessonDate, this.lessonStartTime, this.lessonEndTime)).subscribe(
+        data => {
+          console.log(data)
+          console.log(this.lessonStartTime);
+          console.log(this.lessonEndTime);
+          this.listLessons();
+          this.blankName = false;
+        });
+    } else {
+      this.blankName = true;
+    }
 
 
   }
