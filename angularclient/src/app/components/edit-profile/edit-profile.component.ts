@@ -29,11 +29,6 @@ export class EditProfileComponent implements OnInit {
     this.userService.getAllEmails().subscribe(
       data => this.emails = data
     )
-    $('.btn-add').click(function successAlert() {
-      $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
-        $('.alert-success').slideUp(500);
-      });
-    });
   }
 
   onSubmit() {
@@ -48,5 +43,6 @@ export class EditProfileComponent implements OnInit {
       data => {
         this.userService.getUsersList();
       });
+    alert("Profile information updated!")
   }
 }
