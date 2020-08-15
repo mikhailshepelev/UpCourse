@@ -54,12 +54,9 @@ Then you can access the application at http://localhost:4200/
 **Log in or register as a new user**
 Log in with following credentials:
 
-as ADMIN
- - username: alexj, password: 1234 
-as TEACHER 
- - username: linam, password: 8776
-as STUDENT
- - username: johns, password: 3453
+ - username: alexj, password: 1234  as ADMIN 
+ - username: linam, password: 8776  as TEACHER
+ - username: johns, password: 3453  as STUDENT
 
 OR register and log in as a new student
 
