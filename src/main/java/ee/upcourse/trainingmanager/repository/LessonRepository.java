@@ -1,7 +1,6 @@
 package ee.upcourse.trainingmanager.repository;
 
 import ee.upcourse.trainingmanager.model.Lesson;
-import ee.upcourse.trainingmanager.model.Topic;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +12,4 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
 
     Page<Lesson> findByTopicId(@RequestParam("id") Long id, Pageable pageable);
     Page<Lesson> findBySubjectContaining(@RequestParam("subject") String subject, Pageable pageable);
-
-
 }

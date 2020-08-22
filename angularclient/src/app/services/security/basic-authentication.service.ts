@@ -12,23 +12,6 @@ export class BasicAuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  executeBasicAuthenticationService(username, password){
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ":" + password);
-    let headers = new HttpHeaders({
-      Authorization: basicAuthHeaderString
-    })
-    return this.http.get<AuthenticationBean>(`http://localhost:8080/basicauth`,
-      {headers : headers}).pipe(
-      map(
-        data => {
-          sessionStorage.setItem(AUTHENTICATED_USER, username);
-          sessionStorage.setItem(TOKEN, basicAuthHeaderString);
-          return data;
-        }
-      )
-    );
-  }
-
   executeJwtAuthenticationService(username, password){
     return this.http.post<any>(`http://localhost:8080/authenticate`,
       {username, password}).pipe(map(
@@ -58,8 +41,4 @@ export class BasicAuthenticationService {
     sessionStorage.removeItem(AUTHENTICATED_USER)
     sessionStorage.removeItem(TOKEN)
   }
-}
-
-export class AuthenticationBean {
-  constructor(public message:string) {}
 }

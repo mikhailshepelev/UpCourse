@@ -51,6 +51,4 @@ export class UserSearchComponent implements OnInit {
       this.isTeacher = true;
     }
   }
-
-
 }

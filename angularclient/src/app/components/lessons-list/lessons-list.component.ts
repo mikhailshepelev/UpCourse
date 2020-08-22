@@ -25,7 +25,6 @@ export class LessonsListComponent implements OnInit {
   searchMode: boolean;
   blankName = false;
 
-
   constructor(private topicService: TopicService,
               private lessonService: LessonService,
               private route: ActivatedRoute) { }
@@ -65,8 +64,6 @@ export class LessonsListComponent implements OnInit {
     } else {
       this.blankName = true;
     }
-
-
   }
 
   deleteLesson(id: number) {
@@ -78,40 +75,28 @@ export class LessonsListComponent implements OnInit {
   }
 
   getCurrentTopic() {
-
     this.topicService.getTopicById(this.currentTopicId).subscribe((data: Topic) => {
       this.currentTopic = data;
     });
   }
 
-
   listLessons() {
-
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
-
     if (this.searchMode) {
       this.handleSearchLessons();
     }
     else {
-
-
-      //check if "id" parameter is available
       const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-
       if (hasCategoryId) {
-        // get 'id' and convert it into number from string using for that '+' before statement
         this.currentTopicId = +this.route.snapshot.paramMap.get('id');
       }
-
       this.lessonService.getLessonsList(this.currentTopicId).subscribe(
         data => {
           this.lessons = data;
         }
       )
-
       this.getCurrentTopic();
     }
-
   }
 
   editTopic() {
@@ -119,24 +104,18 @@ export class LessonsListComponent implements OnInit {
       data => {
       });
     this.isClicked = false;
-
   }
 
   setClicked() {
     this.isClicked = true;
   }
 
-  // search for lessons
   handleSearchLessons() {
-
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
-
-    // now search for the products using keyword
     this.lessonService.searchLessons(theKeyword).subscribe(
       data => {
         this.lessons = data;
       }
     )
   }
-
 }

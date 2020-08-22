@@ -44,7 +44,6 @@ export class TopicsListComponent implements OnInit {
     });
   }
 
-
   addNewTopic() {
     this.blankName = false;
     if (this.topicName != '' && this.topicName != undefined) {
@@ -57,8 +56,6 @@ export class TopicsListComponent implements OnInit {
     } else {
       this.blankName = true;
     }
-
-
   }
 
   deleteTopic(id: number) {
@@ -70,44 +67,31 @@ export class TopicsListComponent implements OnInit {
   }
 
   getCurrentCourse() {
-
     this.courseService.getCourseById(this.currentCourseId).subscribe((data: Course) => {
       this.currentCourse = data;
     });
   }
 
-
-
   listTopics() {
-
-    //check if "id" parameter is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-
     if (hasCategoryId) {
-      // get 'id' and convert it into number from string using for that '+' before statement
       this.currentCourseId = +this.route.snapshot.paramMap.get('id');
     }
-
     this.topicService.getTopicsList(this.currentCourseId).subscribe(
       data => {
         this.topics = data;
       }
     )
-
-
   }
-
 
   editCourse() {
     this.courseService.postJson(this.currentCourse).subscribe(
       data => {
       });
     this.isClicked = false;
-
   }
 
   setClicked() {
     this.isClicked = true;
   }
-
 }

@@ -21,7 +21,6 @@ import { DatePipe } from '@angular/common';
 import {CustomDateFormatter} from "./custom-date-formatter.provider";
 import {BasicAuthenticationService} from "../../services/security/basic-authentication.service";
 
-
 @Component({
   selector: 'app-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,17 +39,11 @@ export class CalendarComponent implements OnInit{
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
-
   refresh: Subject<any> = new Subject();
-
   lessonsList: Lesson[];
-
   events: CalendarEvent[] = [];
-
   activeDayIsOpen: boolean = true;
 
   constructor(private lessonService: LessonService,
@@ -87,9 +80,6 @@ export class CalendarComponent implements OnInit{
     }
   }
 
-
-
-
   setView(view: CalendarView) {
     this.view = view;
   }
@@ -107,5 +97,4 @@ export class CalendarComponent implements OnInit{
       }
     )
   }
-
 }

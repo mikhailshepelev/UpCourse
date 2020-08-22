@@ -29,19 +29,6 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(`/login`);
   }
 
-  handleBasicAuthLogin() {
-      this.basicAuthenticationService.executeBasicAuthenticationService(this.username, this.password)
-        .subscribe(
-          data => {
-            this.router.navigate(['courses', this.username])
-            this.invalidLogin = false;
-          },
-          error => {
-            this.invalidLogin = true;
-          }
-        )
-    }
-
   handleJwtAuthLogin() {
     this.basicAuthenticationService.executeJwtAuthenticationService(this.username, this.password)
       .subscribe(
@@ -73,7 +60,6 @@ export class LoginComponent implements OnInit {
     this.clickResetPassword = true;
   }
 
-
     checkRoles(): boolean {
       for (let tempRole of this.loggedUserRoles) {
         if (tempRole.authority === 'ROLE_ADMIN') {
@@ -82,6 +68,5 @@ export class LoginComponent implements OnInit {
       }
       return false;
     }
-
 }
 

@@ -8,12 +8,11 @@ import java.util.Date;
 public class HttpResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy HH:mm:ss", timezone = "Europe/Tallinn")
     private Date timeStamp;
-    private int httpStatusCode; // 200, 201, 400, 500
+    private int httpStatusCode;
     private HttpStatus httpStatus;
     private String reason;
     private String message;
 
-    // Constructor never used. Can be (and should be) deleted
     public HttpResponse() {}
 
     public HttpResponse(int httpStatusCode, HttpStatus httpStatus, String reason, String message) {

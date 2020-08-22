@@ -2,7 +2,6 @@ package ee.upcourse.trainingmanager.config.jwt;
 
 import ee.upcourse.trainingmanager.model.Role;
 import ee.upcourse.trainingmanager.model.User;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

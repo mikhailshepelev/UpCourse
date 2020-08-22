@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import ee.upcourse.trainingmanager.config.jwt.*;
 import ee.upcourse.trainingmanager.model.User;
 import ee.upcourse.trainingmanager.service.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class JwtAuthenticationRestController {
@@ -28,17 +26,18 @@ public class JwtAuthenticationRestController {
     @Value("${jwt.http.request.header}")
     private String tokenHeader;
 
-    @Autowired
     private AuthenticationManager authenticationManager;
-
-    @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
     private UserDetailsService jwtUserDetailsService;
+    private UserService userService;
 
     @Autowired
-    private UserService userService;
+    public JwtAuthenticationRestController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, UserDetailsService jwtUserDetailsService, UserService userService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.jwtUserDetailsService = jwtUserDetailsService;
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
@@ -48,8 +47,6 @@ public class JwtAuthenticationRestController {
 
         final UserDetails userDetails = jwtUserDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
-
-        log.info(userDetails.getAuthorities().toString());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 

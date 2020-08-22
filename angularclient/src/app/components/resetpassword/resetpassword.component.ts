@@ -39,5 +39,4 @@ export class ResetpasswordComponent implements OnInit {
     this.loginComponent.clickResetPassword = false;
     this.loginComponent.clickRegister = true;
   }
-
 }

@@ -38,7 +38,6 @@ export class UserService {
     )
   }
 
-  //TODO: complete this method
   patchJson<T>(user: User): Observable<T> {
     return this.httpClient.patch<T>(`${this.baseUrl}/edit-user`,
       JSON.stringify(user),
@@ -92,10 +91,7 @@ export class UserService {
   resetPassword(email: string): Observable<string> {
     return this.httpClient.get<string>(`${this.baseUrl}/resetpassword/${email}`);
   }
-
 }
-
-
 
 interface GetResponseUsers {
   _embedded: {

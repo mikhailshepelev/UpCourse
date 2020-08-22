@@ -5,6 +5,4 @@ export class Role {
   name: string;
   users: User[];
   authority: string;
-
-
 }

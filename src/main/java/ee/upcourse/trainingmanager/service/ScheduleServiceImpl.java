@@ -3,14 +3,12 @@ package ee.upcourse.trainingmanager.service;
 import ee.upcourse.trainingmanager.model.*;
 import ee.upcourse.trainingmanager.dto.ScheduleDTO;
 import ee.upcourse.trainingmanager.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Service
 public class ScheduleServiceImpl implements ScheduleService{
 

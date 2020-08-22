@@ -17,7 +17,6 @@ export class RegistrationComponent implements OnInit {
   usernames: string[];
   emails: string[];
 
-
   constructor(private userService: UserService,
               private loginComponent: LoginComponent) {
   }
@@ -55,5 +54,4 @@ export class RegistrationComponent implements OnInit {
     this.loginComponent.clickRegister = false;
     this.loginComponent.clickResetPassword = true;
   }
-
 }

@@ -34,13 +34,11 @@ export class TeacherService {
     const url = `${this.baseUrl}/topics/${theTopicId}`;
     const teacher = `${this.baseUrl}/users/${theTeacherId}`;
     return this.httpClient.patch(url,JSON.stringify({'teacher' : teacher}), {headers: this.headers});
-
   }
 
   deleteTeacherFromTopic(theTopicId: number, theTeacherId: number) {
     const url = `${this.baseUrl}/topics/${theTopicId}/teacher/${theTeacherId}`;
     return this.httpClient.delete(url);
-
   }
 }
 
