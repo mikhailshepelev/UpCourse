@@ -74,4 +74,4 @@ and Software Development Academy
 
 ## Project status
 
-Work in progress :)
+Completed
